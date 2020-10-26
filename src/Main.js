@@ -2,6 +2,8 @@ import { withRouter } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addUser } from "./redux/actionCreator";
+import CodeEditor from "./components/codeEditor";
+import { Route } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -20,7 +22,11 @@ class Main extends Component {
   }
 
   render() {
-    return <div>Hello</div>;
+    return (
+      <React.Fragment>
+        <Route exact path="/code" component={CodeEditor} />
+      </React.Fragment>
+    );
   }
 }
 
