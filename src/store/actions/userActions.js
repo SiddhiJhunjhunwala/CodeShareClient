@@ -1,4 +1,4 @@
-import * as ActionTypes from "./actionTypes";
+import * as ActionTypes from "../types";
 // import user files here
 
 export const fetchUser = () => (dispatch) => {};
