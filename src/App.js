@@ -4,14 +4,21 @@ import CodeEditor from "./components/codeEditor";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 
+import Pusher from "./pages/index";
+
+
 export default function App() {
   return (
     <div className="App">
       <Switch>
         <Route path="/code" component={CodeEditor} />
+
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         {/* <Route path="/code" component={CodeEditor} /> */}
+
+        <Route path="/" component={Pusher} />
+
       </Switch>
     </div>
   );
