@@ -23,7 +23,7 @@ const CodeEditor = (props) => {
   return (
     <div>
       <AceEditor
-        mode="html"
+        mode="javascript"
         theme="monokai"
         setOptions={{
           enableBasicAutocompletion: true,

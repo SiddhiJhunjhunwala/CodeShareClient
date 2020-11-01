@@ -18,7 +18,7 @@ const Login = (props) => {
     showPassword: false,
   });
 
-  const url = "http://localhost:5000";
+  const url = "http://localhost:5000/api/users";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,6 +28,8 @@ const Login = (props) => {
     try {
       const response = await axios.post(`${url}/login`, values);
       console.log("Returned data:", response);
+      const token = response.data.token;
+      localStorage.setItem("token", token);
     } catch (e) {
       console.log(` Axios request failed: ${e}`);
     }
@@ -66,16 +68,7 @@ const Login = (props) => {
           </div>
         </h1>
       </Grid>
-      <Grid
-        container
-        item
-        direction="column"
-        className="form"
-        // justify="space-between"
-        // alignItems="center"
-        xs={12}
-        md={6}
-      >
+      <Grid container item direction="column" className="form" xs={12} md={6}>
         <div></div>
         <div
           style={{
@@ -126,8 +119,6 @@ const Login = (props) => {
               inputProps={{
                 pattern:
                   "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$",
-                // helperText:
-                //   "8-12 chars with at least 1 uppercase,lowercase,number,special char :!@#$%^&*_=+-",
               }}
               id="filled-adornment-password"
               style={{ marginBottom: "4px" }}

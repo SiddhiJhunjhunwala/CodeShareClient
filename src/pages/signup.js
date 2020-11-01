@@ -30,7 +30,7 @@ const Signup = (props) => {
     );
     try {
       const response = await axios.post(
-        "http://localhost:5000/register",
+        "http://localhost:5000/api/users/register",
         values
       );
       console.log("Returned data:", response);
