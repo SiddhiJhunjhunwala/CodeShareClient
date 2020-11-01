@@ -1,61 +1,58 @@
-import { React, Component } from "react";
-import "./App.css";
-import Main from "./Main";
-import { Provider } from "react-redux";
-import { ConfigureStore } from "./redux/store";
-import { BrowserRouter } from "react-router-dom";
+import { React } from "react";
+import { Switch, Route } from "react-router-dom";
+import CodeEditor from "./components/codeEditor";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 
-const store = ConfigureStore();
+import Pusher from "./pages/index";
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <div className="App">
-            <Main />
-          </div>
-        </BrowserRouter>
-      </Provider>
-    );
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <Switch>
+        <Route path="/code" component={CodeEditor} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        {/* <Route path="/code" component={CodeEditor} /> */}
+
+        <Route path="/" component={Pusher} />
+      </Switch>
+    </div>
+  );
 }
 
-export default App;
+// Main.js
 
-// import "brace/theme/monokai";
-// import "ace-builds/src-noconflict/mode-java";
-// import "ace-builds/src-noconflict/mode-javascript";
-// import "ace-builds/src-noconflict/mode-python";
-// import "ace-builds/src-noconflict/mode-xml";
-// import "ace-builds/src-noconflict/mode-ruby";
-// import "ace-builds/src-noconflict/mode-sass";
-// import "ace-builds/src-noconflict/mode-markdown";
-// import "ace-builds/src-noconflict/mode-mysql";
-// import "ace-builds/src-noconflict/mode-json";
-// import "ace-builds/src-noconflict/mode-html";
-// import "ace-builds/src-noconflict/mode-handlebars";
-// import "ace-builds/src-noconflict/mode-javascript";
-// import "ace-builds/src-noconflict/mode-golang";
-// import "ace-builds/src-noconflict/mode-csharp";
-// import "ace-builds/src-noconflict/mode-elixir";
-// import "ace-builds/src-noconflict/mode-typescript";
-// import "ace-builds/src-noconflict/mode-css";
+// import { withRouter } from "react-router-dom";
+// import React, { Component } from "react";
+// import { connect } from "react-redux";
+// import { addUser } from "./store/actions";
+// import CodeEditor from "./components/codeEditor";
+// import { Route } from "react-router-dom";
 
-// export default class Main extends Component {
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user,
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   addUser: (param1, param2) => dispatch(addUser(param1, param2)),
+// });
+
+// class Main extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {};
+//   }
+
 //   render() {
 //     return (
-//       <div>
-//         <AceEditor
-//           mode="html"
-//           theme="monokai"
-//           setOptions={{
-//             enableBasicAutocompletion: true,
-//             enableLiveAutocompletion: true,
-//             enableSnippets: true,
-//           }}
-//         />
-//       </div>
+//       <React.Fragment>
+//         <Route exact path="/code" component={CodeEditor} />
+//       </React.Fragment>
 //     );
 //   }
 // }
+
+// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
