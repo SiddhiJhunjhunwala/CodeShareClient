@@ -7,32 +7,22 @@ import {
   FormHelperText,
   TextField,
 } from "@material-ui/core";
+import * as Actions from "../store/actions";
+import { useDispatch } from "react-redux";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
 import "../css/login.css";
-import axios from "axios";
 
 const Login = (props) => {
+  const dispatch = useDispatch();
   const [values, setValues] = React.useState({
     email: "",
     password: "",
     showPassword: false,
   });
 
-  const url = "http://localhost:5000/api/users";
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(
-      `email=${values.email},password=${values.password},first name=${values.first_name},last name=${values.last_name},phone=${values.phone}`
-    );
-    try {
-      const response = await axios.post(`${url}/login`, values);
-      console.log("Returned data:", response);
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-    } catch (e) {
-      console.log(` Axios request failed: ${e}`);
-    }
+    dispatch(Actions.login(values, props.history));
   };
 
   const handleChange = (prop) => (event) => {
@@ -54,7 +44,6 @@ const Login = (props) => {
         xs={12}
         md={6}
         style={{
-          background: "rgb(53,69,111)",
           background:
             "linear-gradient(125deg, rgba(53,69,111,1) 0%, rgba(26,38,74,1) 43%, rgba(10,18,39,1) 77%, rgba(8,14,31,1) 100%)",
         }}
@@ -116,10 +105,10 @@ const Login = (props) => {
               required
               className="input"
               // error
-              inputProps={{
-                pattern:
-                  "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$",
-              }}
+              // inputProps={{
+              //   pattern:
+              //     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$",
+              // }}
               id="filled-adornment-password"
               style={{ marginBottom: "4px" }}
               type={values.showPassword ? "text" : "password"}
@@ -158,7 +147,7 @@ const Login = (props) => {
                 textDecoration: "none",
                 fontStyle: "none",
               }}
-              href="#"
+              href="/signup"
             >
               Sign Up
             </a>

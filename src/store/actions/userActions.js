@@ -10,3 +10,15 @@ export function signup(data, history) {
       })
       .catch((Exception) => {});
 }
+
+export function login(data, history) {
+  const result = API.post("/api/users/login", data);
+
+  return (dispatch) =>
+    result
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) history.push("/");
+      })
+      .catch((Exception) => {});
+}
