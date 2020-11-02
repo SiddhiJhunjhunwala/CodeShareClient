@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/code" component={CodeEditor} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        {/* <Route path="/code" component={CodeEditor} /> */}
+        <Route path="/code" component={CodeEditor} />
 
         <Route path="/" component={Pusher} />
       </Switch>

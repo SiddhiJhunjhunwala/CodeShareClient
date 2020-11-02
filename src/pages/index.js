@@ -14,6 +14,18 @@ import axios from "axios";
 import BlockStyleControls from "../components/blockStyleControls";
 import InlineStyleControls from "../components/inlineStylesControls";
 import "bootstrap/dist/css/bootstrap.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faPlusCircle,
+  faTrashAlt,
+  faCheckDouble,
+  faPen,
+  faDownload,
+  faStickyNote,
+  faUserCircle,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 const styleMap = {
   CODE: {
@@ -147,36 +159,76 @@ class RichEditor extends Component {
     }
 
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="RichEditor-root col-12 col-md-6">
-            <BlockStyleControls
-              editorState={editorState}
-              onToggle={this.toggleBlockType}
-            />
-            <InlineStyleControls
-              editorState={editorState}
-              onToggle={this.toggleInlineStyle}
-            />
-            <div className={className} onClick={this.focus}>
-              <Editor
-                blockStyleFn={this.getBlockStyle}
-                customStyleMap={styleMap}
-                editorState={editorState}
-                handleKeyCommand={this.handleKeyCommand}
-                keyBindingFn={this.mapKeyToEditorCommand}
-                onChange={this.onChange}
-                placeholder="What's on your mind?"
-                ref="editor"
-                spellCheck={true}
-              />
-            </div>
+      <React.Fragment>
+        <div className="room-header">
+          <div className="home">
+            <FontAwesomeIcon icon={faHome} />
+            &nbsp; Home
           </div>
-          <div className="col-12 col-md-6">
-            <div dangerouslySetInnerHTML={{ __html: this.state.text }} />
+          <div className="room-name">Room name</div>
+          <div className="profile">
+            <FontAwesomeIcon icon={faUserCircle} /> Name
           </div>
         </div>
-      </div>
+        <div className="container-fluid">
+          <div style={{ height: "90vh" }} className="row">
+            <div className="RichEditor-root col-12 col-md-8">
+              <BlockStyleControls
+                editorState={editorState}
+                onToggle={this.toggleBlockType}
+              />
+              <InlineStyleControls
+                editorState={editorState}
+                onToggle={this.toggleInlineStyle}
+              />
+              <div className={className} onClick={this.focus}>
+                <Editor
+                  blockStyleFn={this.getBlockStyle}
+                  customStyleMap={styleMap}
+                  editorState={editorState}
+                  handleKeyCommand={this.handleKeyCommand}
+                  keyBindingFn={this.mapKeyToEditorCommand}
+                  onChange={this.onChange}
+                  placeholder="What's on your mind?"
+                  ref="editor"
+                  spellCheck={true}
+                />
+              </div>
+            </div>
+            <div className="col-12 col-md-4">
+              {/* style={{ background: "#b387de" }} */}
+              <div className="notes-header container-fluid">
+                <FontAwesomeIcon icon={faStickyNote} />
+                <h5 style={{ fontStyle: "italic", display: "inline-block" }}>
+                  &nbsp; NOTES
+                </h5>
+                <div style={{ flex: 1, textAlign: "right" }}>
+                  <FontAwesomeIcon icon={faPlus} />
+                </div>
+              </div>
+              <blockquote
+                style={{
+                  background: "#efe0ff",
+                  borderLeft: "0.3rem solid #b387de",
+                  cursor: "pointer",
+                }}
+                className="note"
+              >
+                dbf jhuof lk;jkidjfioj jhgudhj huiho ...
+                {/* <div style={{ float: "right" }}>
+                  <FontAwesomeIcon icon={faTrashAlt} />
+                  <FontAwesomeIcon icon={faDownload} />
+                  <FontAwesomeIcon icon={faCheckDouble} />
+                  <FontAwesomeIcon icon={faPen} />
+                </div> */}
+              </blockquote>
+            </div>
+            {/* <div className="col-12 col-md-6">
+            <div dangerouslySetInnerHTML={{ __html: this.state.text }} />
+          </div> */}
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

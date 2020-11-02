@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Muli");
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 body {
   margin: 0;
   font-family: "Muli", sans-serif !important; /* add this line to the body tag */
@@ -69,4 +69,49 @@ blockquote {
   font-style: italic;
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
+}
+/* code and notes */
+
+.room-header {
+  /* background: rgb(53, 85, 168);
+  background: linear-gradient(
+    126deg,
+    rgba(53, 85, 168, 1) 0%,
+    rgba(57, 83, 169, 1) 14%,
+    rgba(123, 53, 188, 1) 100%
+  ); */
+  background: rgb(53, 85, 168);
+  background: linear-gradient(
+    126deg,
+    rgba(53, 85, 168, 1) 0%,
+    rgba(57, 83, 169, 1) 14%,
+    rgba(80, 73, 176, 1) 57%,
+    rgba(123, 53, 188, 1) 100%
+  );
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  font-size: 130%;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+}
+
+.home,
+.profile {
+  margin-right: 2rem;
+  margin-left: 2rem;
+  font-size: 90%;
+}
+
+.room-name {
+  flex: 1;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.notes-header {
+  height: 10vh;
+  display: flex;
+  align-items: center;
 }
