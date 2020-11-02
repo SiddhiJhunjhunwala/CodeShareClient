@@ -1,14 +1,12 @@
-import * as ActionTypes from "../types";
-// import user files here
+import API from "../../lib/api";
 
-export const fetchUser = () => (dispatch) => {};
+export function signup(data, history) {
+  const result = API.post("/api/users/register", data);
 
-export const addUser = (param1, param2) => {
-  return {
-    type: ActionTypes.ADD_USER,
-    payload: {
-      user: param1,
-      id: param2,
-    },
-  };
-};
+  return (dispatch) =>
+    result
+      .then((response) => {
+        if (response.status === 201) history.push("/login");
+      })
+      .catch((Exception) => {});
+}
