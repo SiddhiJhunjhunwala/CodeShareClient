@@ -4,7 +4,7 @@ import CodeEditor from "./components/codeEditor";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 
-import Pusher from "./pages/index";
+import Pusher from "./pages/SyncingEditor/index";
 
 export default function App() {
   return (
@@ -13,7 +13,6 @@ export default function App() {
         <Route path="/code" component={CodeEditor} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        {/* <Route path="/code" component={CodeEditor} /> */}
 
         <Route path="/" component={Pusher} />
       </Switch>
