@@ -23,20 +23,23 @@ const Notes = (props) => {
         </Icon>
         &nbsp; Notes - N
       </h1>
-      <Button
-        size="small"
-        variant="outlined"
-        style={{
-          borderRadius: "5px",
-          color: "#43B581",
-          borderColor: "#43B581",
-          textTransform: "capitalize",
-          float: "right",
-          margin: "16px 16px 6px 16px",
-        }}
+      <button
+        // size="small"
+        // variant="outlined"
+        style={
+          {
+            // borderRadius: "5px",
+            // color: "#43B581",
+            // border: "1px solid #43B581",
+            // textTransform: "capitalize",
+            // float: "right",
+            // margin: "16px 16px 6px 16px",
+          }
+        }
+        className="new-note"
       >
         New Note +
-      </Button>
+      </button>
       <div className="notes-content">
         <div className="note">
           Randomised words which don't look even slightly believable. If you are
@@ -67,6 +70,42 @@ const Notes = (props) => {
           <div className="read-more">&nbsp;Read more...</div>
         </div>
         {/* <div className="divider notes-divider" /> */}
+        <div className="note">
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority don't look even slightly believable. If you are going to
+          use a passage of Lorem Ipsum.
+          <div className="read-more">&nbsp;Read more...</div>
+        </div>
+        <div className="note">
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority don't look even slightly believable. If you are going to
+          use a passage of Lorem Ipsum.
+          <div className="read-more">&nbsp;Read more...</div>
+        </div>
+        <div className="note">
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority don't look even slightly believable. If you are going to
+          use a passage of Lorem Ipsum.
+          <div className="read-more">&nbsp;Read more...</div>
+        </div>
+        <div className="note">
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority don't look even slightly believable. If you are going to
+          use a passage of Lorem Ipsum.
+          <div className="read-more">&nbsp;Read more...</div>
+        </div>
+        <div className="note">
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority don't look even slightly believable. If you are going to
+          use a passage of Lorem Ipsum.
+          <div className="read-more">&nbsp;Read more...</div>
+        </div>
+        <div className="note">
+          There are many variations of passages of Lorem Ipsum available, but
+          the majority don't look even slightly believable. If you are going to
+          use a passage of Lorem Ipsum.
+          <div className="read-more">&nbsp;Read more...</div>
+        </div>
       </div>
     </div>
   );

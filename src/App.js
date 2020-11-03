@@ -4,6 +4,7 @@ import CodeEditor from "./components/codeEditor";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Main from "./pages/main";
+import ModalC from "./components/modal";
 
 import Pusher from "./pages/index";
 
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/code" component={CodeEditor} />
 
         <Route path="/pusher" component={Pusher} />
+        <Route path="/modal" component={ModalC} />
       </Switch>
     </div>
   );

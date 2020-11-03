@@ -24,11 +24,6 @@ const Main = (props) => {
               display="flex"
               flexDirection="column"
               alignItems="center"
-              style={{
-                background: "#202225",
-                height: "100%",
-                paddingTop: "15px",
-              }}
               className="sidenavbar"
             >
               {/* Logo */}
@@ -39,12 +34,14 @@ const Main = (props) => {
               <div className="divider"></div>
               {/* Rooms */}
               <button className="button-nav">SS</button>
+              <button className="button-nav">SS</button>
               {/* Create room  */}
               <button
                 className="button-nav"
-                onClick={() => {
-                  setModal = true;
-                }}
+                id="create"
+                // onClick={() => {
+                //   setModal = true;
+                // }}
               >
                 <Icon
                   style={{
