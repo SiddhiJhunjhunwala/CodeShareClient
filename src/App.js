@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/code" component={CodeEditor} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/code" component={CodeEditor} />
+        {/* <Route path="/code" component={CodeEditor} /> */}
 
         <Route path="/pusher" component={Pusher} />
         <Route path="/modal" component={ModalC} />

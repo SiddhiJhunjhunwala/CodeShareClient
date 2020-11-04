@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Icon } from "@material-ui/core";
 import { GamesOutlined, List, ForwardOutlined } from "@material-ui/icons";
-
-/**
- * @author
- * @function Notes
- **/
+import axios from "axios";
 
 const Notes = (props) => {
+  useEffect(() => {
+    const url = "http://localhost:5000/api/notes/getNotes";
+    axios
+      .get(url, { room_id: "1", user_id: "1" })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  });
   return (
     <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
       <div className="notes-header"></div>
@@ -21,91 +28,20 @@ const Notes = (props) => {
         >
           <List />
         </Icon>
-        &nbsp; Notes - N
+        {/* &nbsp; Notes - {rawNotes.data.length}  */}
       </h1>
-      <button
-        // size="small"
-        // variant="outlined"
-        style={
-          {
-            // borderRadius: "5px",
-            // color: "#43B581",
-            // border: "1px solid #43B581",
-            // textTransform: "capitalize",
-            // float: "right",
-            // margin: "16px 16px 6px 16px",
-          }
-        }
-        className="new-note"
-      >
-        New Note +
-      </button>
+      <button className="new-note">New Note +</button>
       <div className="notes-content">
-        <div className="note">
-          Randomised words which don't look even slightly believable. If you are
-          going to use a passage of Lorem Ipsum.
-          {/* <Icon
-            style={{
-              color: "#f9a719",
-              fontSize: "0.7rem",
-              fontWeight: "600",
-              cursor: "pointer",
-            }}
-          >
-            <ForwardOutlined />
-          </Icon> */}
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        {/* <div className="divider notes-divider" /> */}
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority don't look even slightly believable. If you are going to
-          use a passage of Lorem Ipsum.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        {/* <div className="divider notes-divider" /> */}
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        {/* <div className="divider notes-divider" /> */}
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority don't look even slightly believable. If you are going to
-          use a passage of Lorem Ipsum.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority don't look even slightly believable. If you are going to
-          use a passage of Lorem Ipsum.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority don't look even slightly believable. If you are going to
-          use a passage of Lorem Ipsum.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority don't look even slightly believable. If you are going to
-          use a passage of Lorem Ipsum.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority don't look even slightly believable. If you are going to
-          use a passage of Lorem Ipsum.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
-        <div className="note">
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority don't look even slightly believable. If you are going to
-          use a passage of Lorem Ipsum.
-          <div className="read-more">&nbsp;Read more...</div>
-        </div>
+        {/* Data
+        {note.text.len > 50 ? (
+          <div className="note">
+            {note.text}
+            <div className="read-more">&nbsp;Read more...</div>
+          </div>
+        ) : (
+          `${note}`
+        )} */}
+        {/* end */}
       </div>
     </div>
   );
