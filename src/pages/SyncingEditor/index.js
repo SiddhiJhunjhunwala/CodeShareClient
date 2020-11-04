@@ -11,17 +11,11 @@ import {
 import { stateToHTML } from "draft-js-export-html";
 import Pusher from "pusher-js";
 import axios from "axios";
-import BlockStyleControls from "../components/blockStyleControls";
-import InlineStyleControls from "../components/inlineStylesControls";
-import "bootstrap/dist/css/bootstrap.css";
+import BlockStyleControls from "./blockStyleControls";
+import InlineStyleControls from "./inlineStylesControls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faPlusCircle,
-  faTrashAlt,
-  faCheckDouble,
-  faPen,
-  faDownload,
   faStickyNote,
   faUserCircle,
   faPlus,
