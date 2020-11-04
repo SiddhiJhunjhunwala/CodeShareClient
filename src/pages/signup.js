@@ -7,11 +7,14 @@ import {
   FormHelperText,
   TextField,
 } from "@material-ui/core";
-import axios from "axios";
+import * as Actions from "../store/actions";
+import { useDispatch } from "react-redux";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
 import "../css/signup.css";
 
 const Signup = (props) => {
+  const dispatch = useDispatch();
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -21,22 +24,9 @@ const Signup = (props) => {
     phone: "",
   });
 
-  const url = "http://localhost:5000";
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(
-      `email=${values.email},password=${values.password},first name=${values.first_name},last name=${values.last_name},phone=${values.phone}`
-    );
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/register",
-        values
-      );
-      console.log("Returned data:", response);
-    } catch (e) {
-      console.log(` Axios request failed: ${e}`);
-    }
+    dispatch(Actions.signup(values, props.history));
   };
 
   const handleChange = (prop) => (event) => {
@@ -58,7 +48,6 @@ const Signup = (props) => {
         xs={12}
         md={6}
         style={{
-          background: "rgb(53,69,111)",
           background:
             "linear-gradient(125deg, rgba(53,69,111,1) 0%, rgba(26,38,74,1) 43%, rgba(10,18,39,1) 77%, rgba(8,14,31,1) 100%)",
         }}
@@ -160,7 +149,6 @@ const Signup = (props) => {
                   // pattern: "[2-9]{2}d{8}",
                 }
               }
-              required
               id="phone"
               className="input"
               onChange={handleChange("phone")}
@@ -180,12 +168,14 @@ const Signup = (props) => {
               required
               className="input"
               // error
-              inputProps={{
-                pattern:
-                  "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$",
-                // helperText:
-                //   "8-12 chars with at least 1 uppercase,lowercase,number,special char :!@#$%^&*_=+-",
-              }}
+              // inputProps={
+              //   {
+              //     // pattern:
+              //     //   "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$",
+              //     // helperText:
+              //     //   "8-12 chars with at least 1 uppercase,lowercase,number,special char :!@#$%^&*_=+-",
+              //   }
+              // }
               id="filled-adornment-password"
               style={{ marginBottom: "4px" }}
               type={values.showPassword ? "text" : "password"}
@@ -225,13 +215,12 @@ const Signup = (props) => {
                 textDecoration: "none",
                 fontStyle: "none",
               }}
-              href="#"
+              href="/login"
             >
               Sign In
             </a>
           </div>
         </div>
-        {/* <div></div> */}
       </Grid>
     </Grid>
   );
