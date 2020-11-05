@@ -1,5 +1,13 @@
 import API from "../../lib/api";
-import { GET_ROOM_PARTICIPANTS } from "../types";
+import { GET_ROOM_PARTICIPANTS, SET_ROOM_DIALOG } from "../types";
+
+export const setDialog = (newState) => {
+  return (dispatch) =>
+    dispatch({
+      type: SET_ROOM_DIALOG,
+      payload: newState,
+    });
+};
 
 export const getRoomParticipants = (room_id) => {
   const result = API.get(`/api/room/getParticipants/${room_id}`);

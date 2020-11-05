@@ -7,11 +7,15 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-export default function FormDialog() {
-  const [open, setOpen] = React.useState(false);
+import { useSelector, useDispatch } from "react-redux";
+import * as Actions from "../store/actions";
 
-  const handleClickOpen = () => {
-    setOpen(true);
+export default function FormDialog() {
+  //   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.room.dialog);
+  const setOpen = (newState) => {
+    dispatch(Actions.setDialog(newState));
   };
 
   const handleClose = () => {
@@ -20,25 +24,21 @@ export default function FormDialog() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">CREATE A NEW ROOM</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            Enter the name of the new Room to be created:
           </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
+            label="Room Name"
             type="email"
             fullWidth
           />
@@ -48,7 +48,7 @@ export default function FormDialog() {
             Cancel
           </Button>
           <Button onClick={handleClose} color="primary">
-            Subscribe
+            CREATE
           </Button>
         </DialogActions>
       </Dialog>
