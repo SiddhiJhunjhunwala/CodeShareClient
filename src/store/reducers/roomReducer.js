@@ -1,6 +1,6 @@
 import {
   GET_ROOM_PARTICIPANTS,
-  SET_ROOM_DIALOG,
+  CREATE_ROOM_DIALOG,
   SET_CURRENT_ROOM,
 } from "../types";
 
@@ -18,7 +18,7 @@ export const room = (state = initialState, action) => {
         participants: action.payload,
       };
 
-    case SET_ROOM_DIALOG:
+    case CREATE_ROOM_DIALOG:
       return {
         ...state,
         dialog: action.payload,

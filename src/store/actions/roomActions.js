@@ -1,7 +1,7 @@
 import API from "../../lib/api";
 import {
   GET_ROOM_PARTICIPANTS,
-  SET_ROOM_DIALOG,
+  CREATE_ROOM_DIALOG,
   SET_CURRENT_ROOM,
 } from "../types";
 import history from "../../lib/history";
@@ -9,7 +9,7 @@ import history from "../../lib/history";
 export const setDialog = (newState) => {
   return (dispatch) =>
     dispatch({
-      type: SET_ROOM_DIALOG,
+      type: CREATE_ROOM_DIALOG,
       payload: newState,
     });
 };
@@ -36,17 +36,33 @@ export const createRoom = (room_name) => {
   return (dispatch) =>
     result
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         dispatch({
           type: SET_CURRENT_ROOM,
           payload: response.data.room_id,
         });
         history.push(`/rooms/${response.data.room_id}`);
-        // hstory .push to that room
       })
       .catch((Exception) => {
         console.log(Exception);
       });
 };
 
-// export const
+export const joinRoom = (room_id, history) => {
+  const result = API.get(`/api/room/joinRoom/${room_id}`);
+
+  return (dispatch) =>
+    result
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: SET_CURRENT_ROOM,
+          payload: room_id,
+        });
+        if (response.status === 200) history.push(`/rooms/${room_id}`);
+        // else popup needs to be added using toaster
+      })
+      .catch((Exception) => {
+        console.log(Exception);
+      });
+};

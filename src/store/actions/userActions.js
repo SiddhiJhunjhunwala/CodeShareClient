@@ -43,8 +43,6 @@ export const verifyToken = (token, history) => {
   return (dispatch) =>
     result
       .then((response) => {
-        console.log(response);
-
         if (response.status === 200) {
           localStorage.setItem("token", response.data.token);
           dispatch({
