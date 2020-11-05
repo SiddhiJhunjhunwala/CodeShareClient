@@ -1,4 +1,5 @@
 import API from "../../lib/api";
+import { SET_AUTHENTICATED, SET_CURRENT_USER } from "../types";
 
 export function signup(data, history) {
   const result = API.post("/api/users/register", data);
@@ -18,9 +19,18 @@ export function login(data, history) {
     result
       .then((response) => {
         console.log(response);
+
         if (response.status === 200) {
           localStorage.setItem("token", response.data.token);
-          history.push("/");
+          dispatch({
+            type: SET_CURRENT_USER,
+            payload: response.data.user,
+          });
+          dispatch({
+            type: SET_AUTHENTICATED,
+            payload: true,
+          });
+          history.push("/dashboard");
         }
         // Else popup needs to be shown using Toaster
       })
