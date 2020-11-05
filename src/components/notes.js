@@ -11,7 +11,7 @@ const Notes = (props) => {
     dispatch(getNotes({ room_id: 3 }));
   }, [dispatch]);
 
-  console.log("helloo", notes_list);
+  // console.log("helloo", notes_list);
   return (
     <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
       <div className="notes-header"></div>
