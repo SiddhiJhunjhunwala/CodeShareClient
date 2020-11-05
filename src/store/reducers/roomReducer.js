@@ -1,8 +1,12 @@
-import { GET_ROOM_PARTICIPANTS, SET_ROOM_DIALOG } from "../types";
+import {
+  GET_ROOM_PARTICIPANTS,
+  SET_ROOM_DIALOG,
+  SET_CURRENT_ROOM,
+} from "../types";
 
 const initialState = {
   participants: [],
-  room_id: "",
+  room_id: "160431734",
   dialog: false,
 };
 
@@ -18,6 +22,12 @@ export const room = (state = initialState, action) => {
       return {
         ...state,
         dialog: action.payload,
+      };
+
+    case SET_CURRENT_ROOM:
+      return {
+        ...state,
+        room_id: action.payload,
       };
 
     default:

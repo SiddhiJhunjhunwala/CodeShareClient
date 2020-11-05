@@ -12,9 +12,11 @@ import { useDispatch, useSelector } from "react-redux";
 const RoomNav = (props) => {
   const dispatch = useDispatch();
   const participants = useSelector((state) => state.room.participants);
+  const room_id = useSelector((state) => state.room.room_id);
+
   useEffect(() => {
-    dispatch(Actions.getRoomParticipants(160431734));
-  }, [dispatch]);
+    dispatch(Actions.getRoomParticipants(room_id));
+  }, [dispatch, room_id]);
 
   return (
     <div className="room-nav">

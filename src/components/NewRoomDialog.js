@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -11,7 +11,6 @@ import { useSelector, useDispatch } from "react-redux";
 import * as Actions from "../store/actions";
 
 export default function FormDialog() {
-  //   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const open = useSelector((state) => state.room.dialog);
   const setOpen = (newState) => {
@@ -19,6 +18,16 @@ export default function FormDialog() {
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const [room_name, set_room_name] = useState("");
+  const handleChange = (event) => {
+    set_room_name(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    dispatch(Actions.createRoom(room_name));
     setOpen(false);
   };
 
@@ -41,13 +50,15 @@ export default function FormDialog() {
             label="Room Name"
             type="email"
             fullWidth
+            value={room_name}
+            onChange={handleChange}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleSubmit} color="primary">
             CREATE
           </Button>
         </DialogActions>
