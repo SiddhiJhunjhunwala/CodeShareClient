@@ -8,8 +8,8 @@ const Notes = (props) => {
   const dispatch = useDispatch();
   const notes_list = useSelector((state) => state.notes.notes_list);
   useEffect(() => {
-    dispatch(getNotes({ room_id: 160447610 }));
-  }, [notes_list]);
+    dispatch(getNotes({ room_id: 3 }));
+  }, [dispatch]);
 
   console.log("helloo", notes_list);
   return (

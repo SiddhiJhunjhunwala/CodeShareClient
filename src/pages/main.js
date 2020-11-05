@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Notes from "../components/notes";
 import RoomNav from "../components/roomNav";
 import Editor from "../components/editor";
-import { Grid, Box, Icon, Modal } from "@material-ui/core";
+import { Grid, Box, Icon } from "@material-ui/core";
 
 const Main = (props) => {
-  const [showModal, setModal] = useState(false);
+  // const [showModal, setModal] = useState(false);
 
   return (
     <React.Fragment>

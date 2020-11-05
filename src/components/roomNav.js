@@ -10,7 +10,7 @@ import { Face } from "@material-ui/icons";
 const RoomNav = (props) => {
   return (
     <div className="room-nav">
-      <header className="room-nav-header">Siddhi's Server</header>
+      <header className="room-nav-header">Sid's Server</header>
       <div className="room-nav-content ">
         <div className="nav-sec">
           <h1 className="sec-head">Members</h1>
