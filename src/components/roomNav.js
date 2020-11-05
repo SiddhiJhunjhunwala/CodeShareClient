@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Icon } from "@material-ui/core";
 import { Face } from "@material-ui/icons";
+import * as Actions from "../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 /**
  * @author
@@ -8,6 +10,12 @@ import { Face } from "@material-ui/icons";
  **/
 
 const RoomNav = (props) => {
+  const dispatch = useDispatch();
+  const participants = useSelector((state) => state.room.participants);
+  useEffect(() => {
+    dispatch(Actions.getRoomParticipants(160431734));
+  }, [dispatch]);
+
   return (
     <div className="room-nav">
       <header className="room-nav-header">Sid's Server</header>
@@ -15,42 +23,22 @@ const RoomNav = (props) => {
         <div className="nav-sec">
           <h1 className="sec-head">Members</h1>
 
-          <div className="sec-content">
-            <Icon
-              style={{
-                color: "#f9a719",
-                fontSize: "1.8rem",
-                fontWeight: "600",
-              }}
-            >
-              <Face fontSize="large" />
-            </Icon>
-            &nbsp; siddhi...
-          </div>
-          <div className="sec-content">
-            <Icon
-              style={{
-                color: "#f9a719",
-                fontSize: "1.8rem",
-                fontWeight: "600",
-              }}
-            >
-              <Face fontSize="large" />
-            </Icon>
-            &nbsp; siddhi...
-          </div>
-          <div className="sec-content">
-            <Icon
-              style={{
-                color: "#f9a719",
-                fontSize: "1.8rem",
-                fontWeight: "600",
-              }}
-            >
-              <Face fontSize="large" />
-            </Icon>
-            &nbsp; siddhi...
-          </div>
+          {participants.map((item) => {
+            return (
+              <div className="sec-content">
+                <Icon
+                  style={{
+                    color: "#f9a719",
+                    fontSize: "1.8rem",
+                    fontWeight: "600",
+                  }}
+                >
+                  <Face fontSize="large" />
+                </Icon>
+                &nbsp; {item.first_name} {item.last_name}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

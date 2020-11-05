@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Notes from "../components/notes";
 import RoomNav from "../components/roomNav";
 import Editor from "../components/editor";
+import * as Actions from "../store/actions";
 import { Grid, Box, Icon } from "@material-ui/core";
 
 const Main = (props) => {
   // const [showModal, setModal] = useState(false);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    dispatch(Actions.verifyToken(token));
+  }, [dispatch]);
   return (
     <React.Fragment>
       {/* <Modal

@@ -10,7 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Pusher from "./pages/SyncingEditor/index";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-export default function App() {
+export default function App(props) {
   return (
     <div className="App">
       <Switch>
