@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
-import { Button, Icon } from "@material-ui/core";
-import { GamesOutlined, List, ForwardOutlined } from "@material-ui/icons";
-import axios from "axios";
+import { Icon } from "@material-ui/core";
+import { List } from "@material-ui/icons";
+import { getNotes } from "../store/actions/notesActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Notes = (props) => {
+  const dispatch = useDispatch();
+  const notes_list = useSelector((state) => state.notes.notes_list);
   useEffect(() => {
-    const url = "http://localhost:5000/api/notes/getNotes";
-    axios
-      .get(url, { room_id: "1", user_id: "1" })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  });
+    dispatch(getNotes({ room_id: 160447610 }));
+  }, [notes_list]);
+
+  console.log("helloo", notes_list);
   return (
     <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
       <div className="notes-header"></div>
@@ -28,20 +25,22 @@ const Notes = (props) => {
         >
           <List />
         </Icon>
-        {/* &nbsp; Notes - {rawNotes.data.length}  */}
+        &nbsp; Notes - {notes_list.length}
       </h1>
       <button className="new-note">New Note +</button>
       <div className="notes-content">
-        {/* Data
-        {note.text.len > 50 ? (
-          <div className="note">
-            {note.text}
-            <div className="read-more">&nbsp;Read more...</div>
-          </div>
-        ) : (
-          `${note}`
-        )} */}
-        {/* end */}
+        {notes_list.map((note) => {
+          return note.data.length > 400 ? (
+            <div className="note">
+              {note.data.substring(0, 400)}
+              <div className="read-more" onClick={() => {}}>
+                &nbsp;Read more...
+              </div>
+            </div>
+          ) : (
+            <div className="note">{note.data}</div>
+          );
+        })}
       </div>
     </div>
   );

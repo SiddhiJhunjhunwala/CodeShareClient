@@ -125,6 +125,7 @@ blockquote {
   margin: 0;
   padding: 0;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
 body {
@@ -212,6 +213,7 @@ body {
   text-transform: uppercase;
   font-size: 13px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 .sec-content {
   padding: 0px 10px;
@@ -251,6 +253,7 @@ body {
   margin: 16px 16px 6px 16px;
   padding: 5px 12px 6px 12px;
   transition: 0.2s all;
+  cursor: pointer;
 }
 .new-note:hover,
 .new-note:active,
@@ -327,6 +330,7 @@ body {
 }
 
 .hash {
+  margin-top: 20px;
   margin-left: 15px;
   color: #8e9297;
   font-size: 25px;

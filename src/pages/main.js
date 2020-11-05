@@ -46,7 +46,7 @@ const Main = (props) => {
                 <Icon
                   style={{
                     color: "#43B581",
-                    fontSize: "1.8rem",
+                    fontSize: "2.1rem",
                     fontWeight: "600",
                   }}
                 >

@@ -18,7 +18,11 @@ export function login(data, history) {
     result
       .then((response) => {
         console.log(response);
-        if (response.status === 200) history.push("/");
+        if (response.status === 200) {
+          localStorage.setItem("token", response.data.token);
+          history.push("/");
+        }
+        // Else popup needs to be shown using Toaster
       })
       .catch((Exception) => {});
 }
