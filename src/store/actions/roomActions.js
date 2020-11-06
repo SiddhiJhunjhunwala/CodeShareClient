@@ -4,6 +4,7 @@ import {
   CREATE_ROOM_DIALOG,
   SET_CURRENT_ROOM,
   GET_ROOM_NAME,
+  GET_MY_ROOMS,
 } from "../types";
 import history from "../../lib/history";
 
@@ -96,6 +97,23 @@ export const joinRoom = (room_id, history) => {
               });
         }
         // else popup needs to be added using toaster
+      })
+      .catch((Exception) => {
+        console.log(Exception);
+      });
+};
+
+export const getMyRooms = (room_name) => {
+  const result = API.get("/api/room/getMyRooms");
+
+  return (dispatch) =>
+    result
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: GET_MY_ROOMS,
+          payload: response.data,
+        });
       })
       .catch((Exception) => {
         console.log(Exception);

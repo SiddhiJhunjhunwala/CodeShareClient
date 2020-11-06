@@ -17,7 +17,7 @@ const Main = (props) => {
     <React.Fragment>
       <Grid container>
         <Grid container item xs={2} md={4} lg={2} style={{ height: "100vh" }}>
-          <SideNav />
+          <SideNav {...props} />
           <Grid item xs={9}>
             <RoomNav />
           </Grid>
