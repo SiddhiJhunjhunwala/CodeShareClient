@@ -434,7 +434,7 @@ body {
   width: 100%;
   padding: 10px 0px;
   border-radius: 6px;
-  background-color: #7289da;
+  background-color: rgba(77, 69, 169, 0.85);
   color: white;
   font-weight: bolder;
   outline: none;

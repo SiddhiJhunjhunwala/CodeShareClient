@@ -23,16 +23,6 @@ const Notes = (props) => {
   }, [dispatch]);
 
   const handleDelete = (id) => {
-<<<<<<< HEAD
-    alert(id);
-    // const result = API.delete("/api/notes/deleteNote", id, {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // console.log(result);
-=======
->>>>>>> 7e94472980af0652d6746eac92509988360e7a29
     dispatch(deleteNote({ note_id: id }));
     setTimeout(() => {
       dispatch(getNotes({ room_id }));
@@ -44,36 +34,16 @@ const Notes = (props) => {
     e.preventDefault();
     if (current_id) {
       dispatch(updateNote({ note_id: current_id, data }));
-<<<<<<< HEAD
-      setId(0);
-=======
->>>>>>> 7e94472980af0652d6746eac92509988360e7a29
     } else {
       dispatch(addNote({ room_id, data }));
     }
-<<<<<<< HEAD
     e.target.reset();
-  };
-
-  // const handleCreate = (e) => {
-  //   e.preventDefault();
-  //   const data = new FormData(e.target);
-  //   console.log("Submitted data", data);
-  //   dispatch(addNote({ room_id: 160447610, data: data }));
-  //   e.target.reset();
-  // };
-
-  // const handleUpdate = (id) => (e) => {
-  //   dispatch(updateNote({ note_id: id, data: "Hello" }));
-  // };
-=======
     setData("");
     setId(0);
     setTimeout(() => {
       dispatch(getNotes({ room_id }));
     }, 100);
   };
->>>>>>> 7e94472980af0652d6746eac92509988360e7a29
 
   return (
     <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
