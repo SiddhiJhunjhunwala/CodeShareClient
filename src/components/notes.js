@@ -29,6 +29,12 @@ const Notes = (props) => {
 
   const handleDelete = (id) => {
     alert(id);
+    // const result = API.delete("/api/notes/deleteNote", id, {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    // console.log(result);
     dispatch(deleteNote({ note_id: id }));
   };
 
@@ -37,7 +43,7 @@ const Notes = (props) => {
     alert(data);
     if (current_id) {
       dispatch(updateNote({ note_id: current_id, data }));
-      setId = 0;
+      setId(0);
     } else {
       dispatch(addNote({ room_id: 160447610, data }));
     }
@@ -52,9 +58,9 @@ const Notes = (props) => {
   //   e.target.reset();
   // };
 
-  const handleUpdate = (id) => (e) => {
-    dispatch(updateNote({ note_id: id, data: "Hello" }));
-  };
+  // const handleUpdate = (id) => (e) => {
+  //   dispatch(updateNote({ note_id: id, data: "Hello" }));
+  // };
 
   return (
     <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
@@ -108,7 +114,6 @@ const Notes = (props) => {
                         setId(note.note_id);
                         setData(note.data);
                       }}
-                      key={note.note_id}
                     >
                       <Icon
                         style={{
@@ -122,7 +127,6 @@ const Notes = (props) => {
                     </button>
                     <button
                       className="delete-note"
-                      key={note.note_id}
                       onClick={(event) => {
                         setId(note.note_id);
                         handleDelete(note.note_id);
@@ -149,10 +153,9 @@ const Notes = (props) => {
                       className="edit-note"
                       // onClick={handleUpdate(note.note_id)}
                       onClick={() => {
-                        setId = note.note_id;
-                        setData = note.data;
+                        setId(note.note_id);
+                        setData(note.data);
                       }}
-                      key={note.note_id}
                     >
                       <Icon
                         style={{
@@ -166,7 +169,6 @@ const Notes = (props) => {
                     </button>
                     <button
                       className="delete-note"
-                      key={note.note_id}
                       onClick={(event) => {
                         setId(note.note_id);
                         alert(note.note_id);
