@@ -53,7 +53,6 @@ export default function FormDialog() {
                   margin="dense"
                   id="name"
                   label="Room Name"
-                  type="email"
                   placeholder="Room Name"
                   fullWidth
                   value={room_name}

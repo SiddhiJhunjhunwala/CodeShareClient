@@ -6,7 +6,7 @@ import {
   GET_ROOM_NAME,
   GET_MY_ROOMS,
 } from "../types";
-import history from "../../lib/history";
+import history from "../../history";
 
 export const setDialog = (newState) => {
   return (dispatch) =>
@@ -60,13 +60,14 @@ export const createRoom = (room_name) => {
           payload: response.data.room_id,
         });
         history.push(`/rooms/${response.data.room_id}`);
+        window.location.reload();
       })
       .catch((Exception) => {
         console.log(Exception);
       });
 };
 
-export const joinRoom = (room_id, history) => {
+export const joinRoom = (room_id) => {
   const result = API.get(`/api/room/joinRoom/${room_id}`);
 
   return (dispatch) =>
@@ -79,6 +80,7 @@ export const joinRoom = (room_id, history) => {
         });
         if (response.status === 200) {
           history.push(`/rooms/${room_id}`);
+          window.location.reload();
 
           // For getting the list of the users
           const updatedRoomParticipants = API.get(
