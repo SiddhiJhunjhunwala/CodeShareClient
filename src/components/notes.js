@@ -83,7 +83,7 @@ const Notes = (props) => {
           </button>
         </form>
 
-        <div className="notes-divider" />
+        {/* <div className="notes-divider" /> */}
         {notes_list.map((note) => {
           return (
             <div key={note.note_id}>

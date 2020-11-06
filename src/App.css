@@ -273,13 +273,15 @@ body {
 }
 
 .notes-divider {
-  clear: both;
+  /* clear: both; */
   width: 90%;
   height: 1px;
+  background-color: rgb(67, 69, 75);
+  margin-bottom: 10px;
 }
 
 .note-form {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .hide {
@@ -335,6 +337,33 @@ body {
   font-weight: 500;
   font-family: "Montserrat", sans-serif !important;
   cursor: default;
+}
+
+.save-editor {
+  color: white;
+  border: 1px solid rgba(77, 69, 169, 0.8);
+  border-radius: 5px;
+  background-color: rgba(77, 69, 169, 0.8);
+  font-size: 16px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.right {
+  display: inline;
+  float: right;
+}
+
+.save-editor:hover,
+.save-editor:active {
+  background-color: transparent;
+  color: #f9a719;
+  border: 1px solid #f9a719;
+  outline: none;
+}
+.save-editor:active {
+  transform: translateY(3px);
 }
 
 .hash {
@@ -471,4 +500,33 @@ body {
   padding: 15px;
   margin-top: 15px;
   cursor: pointer;
+}
+
+.invite {
+  height: 24vh;
+}
+
+.copy-link {
+  background-color: #393c42;
+  color: #cccccc;
+  width: 100%;
+  text-align: center;
+  padding: 8px 0px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 0px auto;
+  cursor: pointer;
+  transition: 0.2s all;
+  margin-top: 5px;
+}
+
+.copy-link:hover,
+.copy-link:active {
+  background-color: rgba(77, 69, 169, 0.8);
+  color: #fff;
+}
+
+.copy-link:active {
+  transform: translateY(3px);
 }
