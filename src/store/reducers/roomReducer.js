@@ -3,6 +3,7 @@ import {
   CREATE_ROOM_DIALOG,
   SET_CURRENT_ROOM,
   GET_ROOM_NAME,
+  GET_MY_ROOMS,
 } from "../types";
 
 const room_id = window.location.pathname.split("/").slice(-1)[0];
@@ -11,6 +12,7 @@ const initialState = {
   room_id: room_id,
   dialog: false,
   room_name: "",
+  my_rooms: [],
 };
 
 export const room = (state = initialState, action) => {
@@ -37,6 +39,12 @@ export const room = (state = initialState, action) => {
       return {
         ...state,
         room_name: action.payload,
+      };
+
+    case GET_MY_ROOMS:
+      return {
+        ...state,
+        my_rooms: action.payload,
       };
 
     default:

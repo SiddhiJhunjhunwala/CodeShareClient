@@ -18,10 +18,17 @@ export default function App(props) {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
+<<<<<<< HEAD
         {/* <ProtectedRoute exact path="/pusher" component={Pusher} /> */}
         {/* <ProtectedRoute exact path="/modal" component={ModalC} /> */}
         <ProtectedRoute exact path="/rooms/:room_id" component={Main} />
         {/* <ProtectedRoute exact path="/code" component={CodeEditor} /> */}
+=======
+        <ProtectedRoute exact path="/pusher" component={Pusher} />
+        <ProtectedRoute exact path="/modal" component={ModalC} />
+        <Route exact path="/rooms/:room_id" component={Main} />
+        <ProtectedRoute exact path="/code" component={CodeEditor} />
+>>>>>>> 7e94472980af0652d6746eac92509988360e7a29
 
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <Route exact path="/invitation/:room_id" component={JoinRoomPage} />

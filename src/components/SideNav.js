@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Box, Icon } from "@material-ui/core";
 import NewRoomDialog from "./NewRoomDialog";
 import * as Actions from "../store/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+// import { Link } from "react-router-dom";
 
-export default function SideNav() {
+export default function SideNav(props) {
   const dispatch = useDispatch();
+  const my_rooms = useSelector((state) => state.room.my_rooms);
+
+  const handleClick = (room_id) => {
+    props.history.push(`/rooms/${room_id}`);
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    dispatch(Actions.getMyRooms());
+  }, [dispatch]);
   return (
     <>
       <Grid item xs={3}>
@@ -22,8 +33,18 @@ export default function SideNav() {
           {/* division */}
           <div className="divider"></div>
           {/* Rooms */}
-          <button className="button-nav">SS</button>
-          <button className="button-nav">SS</button>
+          {my_rooms.map((item) => {
+            return (
+              <button
+                key={item.room_id}
+                onClick={() => handleClick(item.room_id)}
+                className="button-nav"
+              >
+                {item.room_name[0]}
+              </button>
+            );
+          })}
+
           {/* Create room  */}
           <button className="button-nav" id="create">
             <Icon

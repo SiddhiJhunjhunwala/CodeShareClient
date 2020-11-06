@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@material-ui/core";
-import {
-  List,
-  BorderColor,
-  DeleteForever,
-  Description,
-} from "@material-ui/icons";
+import { BorderColor, DeleteForever, Description } from "@material-ui/icons";
 import {
   getNotes,
   addNote,
@@ -17,16 +12,18 @@ import { useDispatch, useSelector } from "react-redux";
 const Notes = (props) => {
   const dispatch = useDispatch();
 
-  let [current_id, setId] = useState();
-  let [data, setData] = useState();
+  let [current_id, setId] = useState(0);
+  let [data, setData] = useState("");
 
+  const room_id = useSelector((state) => state.room.room_id);
   const notes_list = useSelector((state) => state.notes.notes_list);
-
   useEffect(() => {
-    dispatch(getNotes({ room_id: 160447610 }));
+    dispatch(getNotes({ room_id }));
+    // eslint-disable-next-line
   }, [dispatch]);
 
   const handleDelete = (id) => {
+<<<<<<< HEAD
     alert(id);
     // const result = API.delete("/api/notes/deleteNote", id, {
     //   headers: {
@@ -34,18 +31,27 @@ const Notes = (props) => {
     //   },
     // });
     // console.log(result);
+=======
+>>>>>>> 7e94472980af0652d6746eac92509988360e7a29
     dispatch(deleteNote({ note_id: id }));
+    setTimeout(() => {
+      dispatch(getNotes({ room_id }));
+    }, 100);
+    setId(0);
   };
 
   const handleSave = (e) => {
     e.preventDefault();
-    alert(data);
     if (current_id) {
       dispatch(updateNote({ note_id: current_id, data }));
+<<<<<<< HEAD
       setId(0);
+=======
+>>>>>>> 7e94472980af0652d6746eac92509988360e7a29
     } else {
-      dispatch(addNote({ room_id: 160447610, data }));
+      dispatch(addNote({ room_id, data }));
     }
+<<<<<<< HEAD
     e.target.reset();
   };
 
@@ -60,6 +66,14 @@ const Notes = (props) => {
   // const handleUpdate = (id) => (e) => {
   //   dispatch(updateNote({ note_id: id, data: "Hello" }));
   // };
+=======
+    setData("");
+    setId(0);
+    setTimeout(() => {
+      dispatch(getNotes({ room_id }));
+    }, 100);
+  };
+>>>>>>> 7e94472980af0652d6746eac92509988360e7a29
 
   return (
     <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
@@ -81,6 +95,7 @@ const Notes = (props) => {
       <div className="notes-content">
         <form onSubmit={handleSave} className="note-form">
           <textarea
+            autoFocus
             className="note"
             id="new"
             name="data"
@@ -129,7 +144,6 @@ const Notes = (props) => {
                       onClick={(event) => {
                         setId(note.note_id);
                         handleDelete(note.note_id);
-                        alert(note.note_id);
                       }}
                     >
                       <Icon
@@ -150,7 +164,6 @@ const Notes = (props) => {
                   <div className="note-icons">
                     <button
                       className="edit-note"
-                      // onClick={handleUpdate(note.note_id)}
                       onClick={() => {
                         setId(note.note_id);
                         setData(note.data);
@@ -170,9 +183,7 @@ const Notes = (props) => {
                       className="delete-note"
                       onClick={(event) => {
                         setId(note.note_id);
-                        alert(note.note_id);
                         handleDelete(note.note_id);
-                        // alert(event, "_<event | id ->", note.note_id);
                       }}
                     >
                       <Icon
