@@ -53,12 +53,7 @@ export function updateNote(data_id) {
 }
 
 export function deleteNote(data) {
-  console.log(data);
-  const result = API.delete("/api/notes/deleteNote", data, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const result = API.delete(`/api/notes/deleteNote/${data.note_id}`);
   return (dispatch) =>
     result
       .then((response) => {

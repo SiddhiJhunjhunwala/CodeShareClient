@@ -13,13 +13,13 @@ import Pusher from "pusher-js";
 import axios from "axios";
 import BlockStyleControls from "./blockStyleControls";
 import InlineStyleControls from "./inlineStylesControls";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faStickyNote,
-  faUserCircle,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faHome,
+//   faStickyNote,
+//   faUserCircle,
+//   faPlus,
+// } from "@fortawesome/free-solid-svg-icons";
 
 const styleMap = {
   CODE: {
