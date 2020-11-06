@@ -506,6 +506,12 @@ body {
   height: 24vh;
 }
 
+.invite-text {
+  font-size: 14px;
+  text-align: center;
+  color: #cccccc;
+}
+
 .copy-link {
   background-color: #393c42;
   color: #cccccc;
@@ -518,7 +524,7 @@ body {
   margin: 0px auto;
   cursor: pointer;
   transition: 0.2s all;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .copy-link:hover,

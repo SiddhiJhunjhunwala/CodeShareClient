@@ -33,7 +33,15 @@ const RoomNav = (props) => {
       <div className="room-nav-content ">
         <div className="nav-sec">
           <div className="invite">
-            <img src={invite} alt="invite" />
+            <img
+              style={{ marginLeft: "7px" }}
+              src={invite}
+              width="80%"
+              alt="invite"
+            />
+            <div className="invite-text">
+              An adventure begins. Let's add some friends!
+            </div>
             <button className="copy-link">Invite People</button>
           </div>
           <div className="notes-divider" />
