@@ -273,13 +273,15 @@ body {
 }
 
 .notes-divider {
-  clear: both;
+  /* clear: both; */
   width: 90%;
   height: 1px;
+  background-color: rgb(67, 69, 75);
+  margin-bottom: 10px;
 }
 
 .note-form {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .hide {
@@ -337,6 +339,33 @@ body {
   cursor: default;
 }
 
+.save-editor {
+  color: white;
+  border: 1px solid rgba(77, 69, 169, 0.8);
+  border-radius: 5px;
+  background-color: rgba(77, 69, 169, 0.8);
+  font-size: 16px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.right {
+  display: inline;
+  float: right;
+}
+
+.save-editor:hover,
+.save-editor:active {
+  background-color: transparent;
+  color: #f9a719;
+  border: 1px solid #f9a719;
+  outline: none;
+}
+.save-editor:active {
+  transform: translateY(3px);
+}
+
 .hash {
   margin-top: 20px;
   margin-left: 15px;
@@ -368,4 +397,142 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
+}
+
+/* MODAL */
+#form-dialog-title {
+  font-weight: 700 !important;
+  font-size: 2.2rem !important;
+  padding: 24px 30px 0px !important;
+  cursor: default;
+}
+.dialog-title {
+  text-align: center;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.dialog-text {
+  margin-top: 8px !important;
+  color: #4f5660 !important;
+  text-align: center;
+  cursor: default;
+}
+
+.dialog-desc {
+  /* margin-bottom: 10px; */
+}
+
+.customized-dialog {
+  width: 25vw;
+}
+
+.dialog-text {
+  height: 23vh;
+  width: 100%;
+}
+.MuiDialogActions-root.MuiDialogActions-spacing {
+  padding: 0;
+}
+
+#name {
+  border-radius: 6px;
+  width: 100%;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #cccccc;
+}
+
+#name:focus {
+  border: 1px solid rgba(114, 137, 218);
+}
+
+#name-label {
+  margin-top: 40px !important;
+  text-align: left !important;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.buttons {
+  width: 100%;
+  text-align: right;
+}
+.dialog-save {
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 6px;
+  background-color: rgba(77, 69, 169, 0.85);
+  color: white;
+  font-weight: bolder;
+  outline: none;
+  border: none;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+.dialog-save:active {
+  transform: translateY(3px);
+}
+
+.dialog-cancel {
+  margin: 15px 0px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #f05f40;
+  border-radius: 15px;
+  color: #f05f40;
+  padding: 5px 16px;
+  cursor: pointer;
+}
+
+#responsive-dialog-title {
+  padding: 17px 0px 12px;
+  font-size: 20px;
+}
+
+.welcome {
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(77, 69, 169, 0.8);
+  color: white;
+  padding: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.invite {
+  height: 24vh;
+}
+
+.invite-text {
+  font-size: 14px;
+  text-align: center;
+  color: #cccccc;
+}
+
+.copy-link {
+  background-color: #393c42;
+  color: #cccccc;
+  width: 100%;
+  text-align: center;
+  padding: 8px 0px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 0px auto;
+  cursor: pointer;
+  transition: 0.2s all;
+  margin-top: 10px;
+}
+
+.copy-link:hover,
+.copy-link:active {
+  background-color: rgba(77, 69, 169, 0.8);
+  color: #fff;
+}
+
+.copy-link:active {
+  transform: translateY(3px);
 }

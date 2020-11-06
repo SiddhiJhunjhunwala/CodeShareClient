@@ -13,13 +13,6 @@ import Pusher from "pusher-js";
 import axios from "axios";
 import BlockStyleControls from "./blockStyleControls";
 import InlineStyleControls from "./inlineStylesControls";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faHome,
-//   faStickyNote,
-//   faUserCircle,
-//   faPlus,
-// } from "@fortawesome/free-solid-svg-icons";
 
 const styleMap = {
   CODE: {
@@ -160,8 +153,7 @@ class RichEditor extends Component {
 
     return (
       <React.Fragment>
-        <div className="room-header" style={{ background: "red" }}>
-          {/* <div className="home">
+        {/* <div className="home">
             <FontAwesomeIcon icon={faHome} />
             &nbsp; Home
           </div>
@@ -169,7 +161,6 @@ class RichEditor extends Component {
           <div className="profile">
             <FontAwesomeIcon icon={faUserCircle} /> Name
           </div> */}
-        </div>
         <div className="RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
@@ -179,6 +170,11 @@ class RichEditor extends Component {
             editorState={editorState}
             onToggle={this.toggleInlineStyle}
           />
+          <div className="room-header" style={{ background: "transparent" }}>
+            <div className="right">
+              <button className="save-editor">Save</button>
+            </div>
+          </div>
           <div className={className} onClick={this.focus}>
             <Editor
               onBlur={this.onBlur}

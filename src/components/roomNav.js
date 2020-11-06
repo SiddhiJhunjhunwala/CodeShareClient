@@ -3,7 +3,7 @@ import { Icon } from "@material-ui/core";
 import { Face } from "@material-ui/icons";
 import * as Actions from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
-
+import invite from "../images/invite.jpg";
 /**
  * @author
  * @function RoomNav
@@ -32,6 +32,19 @@ const RoomNav = (props) => {
       <header className="room-nav-header">{room_name}</header>
       <div className="room-nav-content ">
         <div className="nav-sec">
+          <div className="invite">
+            <img
+              style={{ marginLeft: "7px" }}
+              src={invite}
+              width="80%"
+              alt="invite"
+            />
+            <div className="invite-text">
+              An adventure begins. Let's add some friends!
+            </div>
+            <button className="copy-link">Invite People</button>
+          </div>
+          <div className="notes-divider" />
           <h1 className="sec-head">Members</h1>
 
           {participants.map((item) => {

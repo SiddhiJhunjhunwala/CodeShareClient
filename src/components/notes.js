@@ -37,6 +37,7 @@ const Notes = (props) => {
     } else {
       dispatch(addNote({ room_id, data }));
     }
+    e.target.reset();
     setData("");
     setId(0);
     setTimeout(() => {
@@ -82,7 +83,7 @@ const Notes = (props) => {
           </button>
         </form>
 
-        <div className="notes-divider" />
+        {/* <div className="notes-divider" /> */}
         {notes_list.map((note) => {
           return (
             <div key={note.note_id}>

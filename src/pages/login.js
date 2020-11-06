@@ -6,6 +6,7 @@ import {
   IconButton,
   FormHelperText,
   TextField,
+  Snackbar,
 } from "@material-ui/core";
 import * as Actions from "../store/actions";
 import { useDispatch } from "react-redux";
@@ -76,6 +77,15 @@ const Login = (props) => {
             </div>
           </Grid>
           <form autoComplete="false" onSubmit={handleSubmit}>
+            <Snackbar
+              open
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+              message="successfully complete"
+              variant="success"
+            />
             <InputLabel
               style={{ marginBottom: "15px" }}
               className="label"
