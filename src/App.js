@@ -3,55 +3,29 @@ import { Switch, Route } from "react-router-dom";
 import CodeEditor from "./components/codeEditor";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
-
+import Main from "./pages/main";
+import ModalC from "./components/modal";
+import PageNotFound from "./pages/404";
+import Dashboard from "./pages/Dashboard";
 import Pusher from "./pages/SyncingEditor/index";
+import JoinRoomPage from "./pages/joinRoom";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-export default function App() {
+export default function App(props) {
   return (
     <div className="App">
       <Switch>
-        <Route path="/code" component={CodeEditor} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <ProtectedRoute exact path="/pusher" component={Pusher} />
+        <ProtectedRoute exact path="/modal" component={ModalC} />
+        <ProtectedRoute exact path="/rooms/:room_id" component={Main} />
+        <ProtectedRoute exact path="/code" component={CodeEditor} />
 
-        <Route path="/" component={Pusher} />
+        <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/invitation/:room_id" component={JoinRoomPage} />
+        <Route path="/" component={PageNotFound} />
       </Switch>
     </div>
   );
 }
-
-// Main.js
-
-// import { withRouter } from "react-router-dom";
-// import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { addUser } from "./store/actions";
-// import CodeEditor from "./components/codeEditor";
-// import { Route } from "react-router-dom";
-
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.user,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   addUser: (param1, param2) => dispatch(addUser(param1, param2)),
-// });
-
-// class Main extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//   }
-
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <Route exact path="/code" component={CodeEditor} />
-//       </React.Fragment>
-//     );
-//   }
-// }
-
-// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

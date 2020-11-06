@@ -1,14 +1,21 @@
-// import * as ActionTypes from "../actionTypes";
-
-const USERS = {
-  user: "siddhi", // for thunk shift this to action creator
+import { SET_AUTHENTICATED, SET_CURRENT_USER } from "../types";
+const initialState = {
+  isAuthenticated: false,
+  current_user: {},
 };
 
-export const user = (state = USERS, action) => {
+export const user = (state = initialState, action) => {
   switch (action.type) {
-    // case ActionTypes.ADD_USER:
-    // ADD USER DETAILS HERE IN A VARIABLE {ACTION.PAYLOAD}
-    //   return state.concat(VARIABLE);
+    case SET_AUTHENTICATED:
+      return {
+        ...state,
+        isAuthenticated: action.payload,
+      };
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        current_user: action.payload,
+      };
     default:
       return state;
   }

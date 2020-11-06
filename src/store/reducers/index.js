@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import { user } from "./userReducer";
-// import room from "./roomReducer";
+import { notes } from "./notesReducer";
+import { room } from "./roomReducer";
 
 export default combineReducers({
   user,
-  //   room,
+  notes,
+  room,
 });

@@ -1,19 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Muli");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 body {
   margin: 0;
-  font-family: "Muli", sans-serif !important; /* add this line to the body tag */
+  font-family: "Muli", sans-serif; /* add this line to the body tag */
 }
 
 .RichEditor-root {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: #36393f;
+  /* border: 1px solid #ddd; */
   font-family: "Georgia", serif;
   font-size: 14px;
   padding: 15px;
+  height: 100%;
+  color: #fff;
 }
 .RichEditor-editor {
-  border-top: 1px solid #ddd;
+  /* border-top: 1px solid #ddd; */
   cursor: text;
   font-size: 16px;
   margin-top: 10px;
@@ -70,48 +75,297 @@ blockquote {
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
 }
-/* code and notes */
 
-.room-header {
-  /* background: rgb(53, 85, 168);
-  background: linear-gradient(
-    126deg,
-    rgba(53, 85, 168, 1) 0%,
-    rgba(57, 83, 169, 1) 14%,
-    rgba(123, 53, 188, 1) 100%
-  ); */
-  background: rgb(53, 85, 168);
-  background: linear-gradient(
-    126deg,
-    rgba(53, 85, 168, 1) 0%,
-    rgba(57, 83, 169, 1) 14%,
-    rgba(80, 73, 176, 1) 57%,
-    rgba(123, 53, 188, 1) 100%
-  );
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  font-size: 130%;
-  font-family: "Roboto", sans-serif;
+/* Discord version */
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+.button-nav {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #36393f;
+  color: #dcddde;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  transition: 0.1s all ease-out;
+}
+/* purple */
+.button-nav:hover {
+  border-radius: 30%;
+  background-color: #7289da;
+  color: #fff;
+}
+/* green */
+/* #create:hover {
+  background-color: #43b581;
+  color: #fff;
+} */
+
+.button-nav:active {
+  transform: translateY(3px);
+  outline: none;
+  border: none;
+}
+.button-nav:focus {
+  outline: none;
+  border: none;
+}
+
+.sidenavbar button {
+  margin-bottom: 11px;
+}
+
+.sidenavbar {
+  background: #202225;
+  height: 100%;
+  padding-top: 15px;
+}
+
+.divider {
+  height: 3px;
+  width: 45%;
+  border-radius: 20%;
+  background-color: #36393f;
+  margin-bottom: 12px;
+}
+
+.room-nav-header {
+  color: #fff;
+  border-bottom: 1px solid #202225;
+  height: 6vh;
+  font-weight: 600;
+  padding: 6% 8%;
+  font-size: 15px;
+  cursor: default;
+}
+.room-nav-header:hover,
+.room-nav-header:active {
+  background: #34373c;
+}
+
+.room-nav {
+  background: #2f3136;
+  height: 100%;
+  overflow: auto hidden;
+  text-overflow: ellipses;
+}
+
+.nav-sec {
+  padding: 16px;
+  color: #8e9297 !important;
+}
+
+.sec-head {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.sec-content {
+  padding: 0px 10px;
+  font-family: "Montserrat", sans-serif !important;
   color: #fff;
 }
 
-.home,
-.profile {
-  margin-right: 2rem;
-  margin-left: 2rem;
-  font-size: 90%;
+.notes {
+  overflow-y: auto;
 }
 
-.room-name {
-  flex: 1;
-  text-align: center;
+.notes .notes-header {
+  border-bottom: 1px solid #202225;
+  height: 6vh;
+  padding: 6% 8%;
+  font-size: 15px;
+  background-color: #36393f;
+}
+
+.notes-heading {
   text-transform: uppercase;
-  font-weight: 600;
+  font-size: 13px !important;
+  font-weight: bold;
+  /* color: #8e9297 !important; */
+  color: #c2c2c2;
+  padding: 10px;
+  cursor: default;
+  /* display: inline-block; */
+}
+.new-note {
+  border-radius: 5px;
+  border: 1px solid #43b581;
+  text-transform: capitalize;
+  float: right;
+  margin: 2px 16px 12px 16px;
+  padding: 5px 12px 6px 12px;
+  transition: 0.2s all;
+  cursor: pointer;
+  background-color: rgb(67, 181, 129, 0.7);
+  color: white;
+}
+.new-note:hover,
+.new-note:active,
+.new-note:focus {
+  border: 1px solid #43b581;
+  outline: none;
+}
+.new-note:hover,
+.new-note:active {
+  border: 1px solid #43b581;
+  border-radius: 1px;
+  color: #43b581;
+  background-color: transparent;
 }
 
-.notes-header {
-  height: 10vh;
-  display: flex;
-  align-items: center;
+.new-note:active {
+  transform: translateY(3px);
+}
+
+.notes-content {
+  /* padding: 0px 25px 0px 25px; */
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.note {
+  margin: 11px;
+  padding: 11px;
+  color: #8e9297;
+  /* color: rgba(255, 255, 255, 0.55); */
+  border: 1px solid #36393f;
+  background-color: #36393f;
+  border-radius: 4px;
+  transition: 0.2s all;
+  cursor: default;
+}
+
+#new {
+  height: 20vh;
+  cursor: text;
+}
+
+.note:hover {
+  background-color: rgb(54, 57, 63, 0.7);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.note:active {
+  transform: translateY(3px);
+}
+
+.note::first-letter {
+  font-size: 20px;
+}
+
+.read-more {
+  display: inline;
+  color: #7289da;
+  cursor: pointer;
+}
+
+.notes-divider {
+  clear: both;
+  width: 90%;
+  height: 1px;
+}
+
+.note-form {
+  margin-bottom: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.note-icons {
+  text-align: right;
+}
+
+.edit-note,
+.delete-note {
+  background-color: transparent;
+  padding: 0;
+  margin: 0px 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.save-note {
+  padding: 7px 12px;
+  border-radius: 3px;
+  outline: none;
+  background: transparent;
+  color: #7289da;
+  border: 1px solid #7289da;
+  transition: 0.2s all;
+  float: right;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.save-note:active {
+  transform: translateY(3px);
+  border-radius: 1px;
+}
+.save-note:hover,
+.save-note:focus {
+  background-color: #7289da;
+  color: white;
+}
+
+.editor-header {
+  color: #fff;
+  border-bottom: 1px solid #202225;
+  height: 6vh;
+  font-size: 15px;
+  /* padding: 5px; */
+}
+.editor-heading {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif !important;
+  cursor: default;
+}
+
+.hash {
+  margin-top: 20px;
+  margin-left: 15px;
+  color: #8e9297;
+  font-size: 25px;
+  font-weight: 400 !important;
+}
+
+.sync-editor {
+  height: 94vh;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
 }
