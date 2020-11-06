@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Pusher from "./pages/SyncingEditor/index";
 import JoinRoomPage from "./pages/joinRoom";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Toast from "./components/Toast";
 
 export default function App(props) {
   return (
@@ -17,13 +18,14 @@ export default function App(props) {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <ProtectedRoute exact path="/pusher" component={Pusher} />
-        <ProtectedRoute exact path="/modal" component={ModalC} />
+        {/* <ProtectedRoute exact path="/pusher" component={Pusher} /> */}
+        {/* <ProtectedRoute exact path="/modal" component={ModalC} /> */}
         <ProtectedRoute exact path="/rooms/:room_id" component={Main} />
-        <ProtectedRoute exact path="/code" component={CodeEditor} />
+        {/* <ProtectedRoute exact path="/code" component={CodeEditor} /> */}
 
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <Route exact path="/invitation/:room_id" component={JoinRoomPage} />
+        <Route path="/toast" component={Toast} />
         <Route path="/" component={PageNotFound} />
       </Switch>
     </div>
