@@ -1,5 +1,6 @@
 import API from "../../lib/api";
 import { SET_AUTHENTICATED, SET_CURRENT_USER } from "../types";
+import history from "../../history";
 
 export const signup = (data, history) => {
   const result = API.post("/api/users/register", data);
@@ -12,7 +13,7 @@ export const signup = (data, history) => {
       .catch((Exception) => {});
 };
 
-export const login = (data, history) => {
+export const login = (data) => {
   const result = API.post("/api/users/login", data);
 
   return (dispatch) =>
@@ -53,7 +54,7 @@ export const verifyToken = (token, history) => {
             type: SET_AUTHENTICATED,
             payload: true,
           });
-          // history.push("/dashboard");
+          history.push(history.goBack);
         }
         // Else popup needs to be shown using Toaster
       })

@@ -1,20 +1,9 @@
 import { Redirect } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import history from "../lib/history";
-import * as Actions from "../store/actions";
+import { useSelector } from "react-redux";
 
 export default function ProtectedRoute(props) {
   const Component = props.component;
-  // const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-  const isAuthenticated = true;
-  const dispatch = useDispatch();
-
-  if (!isAuthenticated) {
-    const token = localStorage.getItem("token");
-    if (token) {
-      dispatch(Actions.verifyToken(token, history));
-    }
-  }
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   return isAuthenticated ? (
     <Component />
