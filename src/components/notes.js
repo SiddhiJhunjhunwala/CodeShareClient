@@ -13,7 +13,6 @@ import {
   deleteNote,
 } from "../store/actions/notesActions";
 import { useDispatch, useSelector } from "react-redux";
-import API from "../lib/api";
 
 const Notes = (props) => {
   const dispatch = useDispatch();

@@ -11,13 +11,13 @@ import history from "./lib/history";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <SnackbarProvider
+      {/* <SnackbarProvider
         SnackbarProps={{ autoHideDuration: 3000 }}
-        direction={{ vertical: "center", horizontal: "center" }}
-      ></SnackbarProvider>
+        direction={{ vertical: "center", horizontal: "center" }} */}
       <BrowserRouter history={history}>
         <App />
       </BrowserRouter>
+      {/* // ></SnackbarProvider> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

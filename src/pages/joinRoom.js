@@ -23,27 +23,31 @@ export default function JoinRoom(props) {
   };
 
   return (
-    <div>
+    <div style={{ background: "#2F3136" }}>
       <Dialog
         fullScreen={fullScreen}
         open={open}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">
+        <h1 className="dialog-title" id="responsive-dialog-title">
           {"Join this Room ?"}
-        </DialogTitle>
+        </h1>
         <DialogContent>
           <DialogContentText>
-            Welcome to Codeshare !! Do'nt Worry we do not share your data
-            anywhere
-            <br /> Are you sure you want to join this room ??
+            <p>
+              Welcome to Codeshare! Don't Worry we do not share your data
+              anywhere.
+              <br /> Are you sure you want to join this room ??
+            </p>
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleSubmit} color="primary" autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
+        {/* <DialogActions> */}
+
+        <button onClick={handleSubmit} className="welcome" autoFocus>
+          Agree
+        </button>
+
+        {/* </DialogActions> */}
       </Dialog>
     </div>
   );

@@ -369,3 +369,106 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
+
+/* MODAL */
+#form-dialog-title {
+  font-weight: 700 !important;
+  font-size: 2.2rem !important;
+  padding: 24px 30px 0px !important;
+  cursor: default;
+}
+.dialog-title {
+  text-align: center;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.dialog-text {
+  margin-top: 8px !important;
+  color: #4f5660 !important;
+  text-align: center;
+  cursor: default;
+}
+
+.dialog-desc {
+  /* margin-bottom: 10px; */
+}
+
+.customized-dialog {
+  width: 25vw;
+}
+
+.dialog-text {
+  height: 23vh;
+  width: 100%;
+}
+.MuiDialogActions-root.MuiDialogActions-spacing {
+  padding: 0;
+}
+
+#name {
+  border-radius: 6px;
+  width: 100%;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #cccccc;
+}
+
+#name:focus {
+  border: 1px solid rgba(114, 137, 218);
+}
+
+#name-label {
+  margin-top: 40px !important;
+  text-align: left !important;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.buttons {
+  width: 100%;
+  text-align: right;
+}
+.dialog-save {
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 6px;
+  background-color: #7289da;
+  color: white;
+  font-weight: bolder;
+  outline: none;
+  border: none;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+.dialog-save:active {
+  transform: translateY(3px);
+}
+
+.dialog-cancel {
+  margin: 15px 0px;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #f05f40;
+  border-radius: 15px;
+  color: #f05f40;
+  padding: 5px 16px;
+  cursor: pointer;
+}
+
+#responsive-dialog-title {
+  padding: 17px 0px 12px;
+  font-size: 20px;
+}
+
+.welcome {
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(77, 69, 169, 0.8);
+  color: white;
+  padding: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}

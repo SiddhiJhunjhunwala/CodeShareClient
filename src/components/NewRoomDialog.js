@@ -37,31 +37,47 @@ export default function FormDialog() {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
+        style={{ borderRadius: "8px" }}
       >
-        <DialogTitle id="form-dialog-title">CREATE A NEW ROOM</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Enter the name of the new Room to be created:
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Room Name"
-            type="email"
-            fullWidth
-            value={room_name}
-            onChange={handleChange}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleSubmit} color="primary">
-            CREATE
-          </Button>
-        </DialogActions>
+        <div className="customized-dialog">
+          <h1 className="dialog-title" style={{}} id="form-dialog-title">
+            Create a new room
+          </h1>
+          <DialogContent style={{}}>
+            <form onSubmit={handleSubmit}>
+              <div className="dialog-text">
+                <div className="dialog-desc">
+                  Your room is where you and your friends collaborate and work.
+                  Make it and check it out!
+                  {/* Enter the name of the new Room to be created: */}
+                </div>
+                <div id="name-label">Type your room name here...</div>
+                <input
+                  autoFocus
+                  margin="dense"
+                  id="name"
+                  label="Room Name"
+                  type="email"
+                  placeholder="Room Name"
+                  fullWidth
+                  value={room_name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <DialogActions>
+                <div className="buttons">
+                  <button type="submit" className="dialog-save">
+                    CREATE
+                  </button>
+                  <button onClick={handleClose} className="dialog-cancel">
+                    Cancel
+                  </button>
+                </div>
+              </DialogActions>
+            </form>
+          </DialogContent>
+        </div>
       </Dialog>
     </div>
   );

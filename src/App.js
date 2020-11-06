@@ -1,13 +1,13 @@
 import { React } from "react";
 import { Switch, Route } from "react-router-dom";
-import CodeEditor from "./components/codeEditor";
+// import CodeEditor from "./components/codeEditor";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Main from "./pages/main";
-import ModalC from "./components/modal";
+// import ModalC from "./components/modal";
 import PageNotFound from "./pages/404";
 import Dashboard from "./pages/Dashboard";
-import Pusher from "./pages/SyncingEditor/index";
+// import Pusher from "./pages/SyncingEditor/index";
 import JoinRoomPage from "./pages/joinRoom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Toast from "./components/Toast";
