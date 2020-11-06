@@ -3,6 +3,7 @@ import {
   GET_ROOM_PARTICIPANTS,
   CREATE_ROOM_DIALOG,
   SET_CURRENT_ROOM,
+  GET_ROOM_NAME,
 } from "../types";
 import history from "../../lib/history";
 
@@ -23,6 +24,22 @@ export const getRoomParticipants = (room_id) => {
         dispatch({
           type: GET_ROOM_PARTICIPANTS,
           payload: response.data,
+        });
+      })
+      .catch((Exception) => {
+        console.log(Exception);
+      });
+};
+
+export const getRoomName = (room_id) => {
+  const result = API.get(`/api/room/getRoomName/${room_id}`);
+
+  return (dispatch) =>
+    result
+      .then((response) => {
+        dispatch({
+          type: GET_ROOM_NAME,
+          payload: response.data.room_name,
         });
       })
       .catch((Exception) => {
