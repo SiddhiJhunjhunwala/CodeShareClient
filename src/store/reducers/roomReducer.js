@@ -4,9 +4,10 @@ import {
   SET_CURRENT_ROOM,
 } from "../types";
 
+const room_id = window.location.pathname.split("/").slice(-1)[0];
 const initialState = {
   participants: [],
-  room_id: "160431734",
+  room_id: room_id,
   dialog: false,
 };
 

@@ -18,7 +18,6 @@ export default function JoinRoom(props) {
 
   const handleSubmit = () => {
     const room_id = window.location.pathname.split("/").slice(-1)[0];
-    console.log(room_id);
     dispatch(Actions.joinRoom(room_id, props.history));
     setOpen(false);
   };

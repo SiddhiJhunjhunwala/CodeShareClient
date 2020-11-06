@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@material-ui/core";
 import { Face } from "@material-ui/icons";
 import * as Actions from "../store/actions";
@@ -11,12 +11,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 const RoomNav = (props) => {
   const dispatch = useDispatch();
-  const participants = useSelector((state) => state.room.participants);
+
   const room_id = useSelector((state) => state.room.room_id);
+
+  const participants_central = useSelector((state) => state.room.participants);
+  const [participants, set_participants] = useState([]);
 
   useEffect(() => {
     dispatch(Actions.getRoomParticipants(room_id));
   }, [dispatch, room_id]);
+
+  useEffect(() => {
+    set_participants(participants_central);
+  }, [participants_central]);
 
   return (
     <div className="room-nav">
