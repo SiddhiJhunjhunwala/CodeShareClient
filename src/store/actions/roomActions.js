@@ -6,7 +6,7 @@ import {
   GET_ROOM_NAME,
   GET_MY_ROOMS,
 } from "../types";
-import history from "../../lib/history";
+import history from "../../history";
 
 export const setDialog = (newState) => {
   return (dispatch) =>
@@ -60,6 +60,7 @@ export const createRoom = (room_name) => {
           payload: response.data.room_id,
         });
         history.push(`/rooms/${response.data.room_id}`);
+        window.location.reload();
       })
       .catch((Exception) => {
         console.log(Exception);

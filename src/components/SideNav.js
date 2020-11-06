@@ -4,13 +4,14 @@ import NewRoomDialog from "./NewRoomDialog";
 import * as Actions from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 // import { Link } from "react-router-dom";
+import history from "../history";
 
 export default function SideNav(props) {
   const dispatch = useDispatch();
   const my_rooms = useSelector((state) => state.room.my_rooms);
 
   const handleClick = (room_id) => {
-    props.history.push(`/rooms/${room_id}`);
+    history.push(`/rooms/${room_id}`);
     window.location.reload();
   };
 

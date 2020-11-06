@@ -22,7 +22,7 @@ const Login = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(Actions.login(values, props.history));
+    dispatch(Actions.login(values));
   };
 
   const handleChange = (prop) => (event) => {
