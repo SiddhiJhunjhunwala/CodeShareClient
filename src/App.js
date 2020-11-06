@@ -4,15 +4,15 @@ import CodeEditor from "./components/codeEditor";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import Main from "./pages/main";
-// import ModalC from "./components/modal";
+import ModalC from "./components/modal";
 import PageNotFound from "./pages/404";
 import Dashboard from "./pages/Dashboard";
-// import Pusher from "./pages/SyncingEditor/index";
+import Pusher from "./pages/SyncingEditor/index";
 import JoinRoomPage from "./pages/joinRoom";
 import AuthRoute from "./components/AuthRouter";
 import Storage from "./lib/storage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Toast from "./components/Toast";
+// import Toast from "./components/Toast";
 
 const { config } = Storage();
 config();
