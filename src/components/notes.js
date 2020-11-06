@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@material-ui/core";
-import { List, BorderColor, DeleteForever } from "@material-ui/icons";
+import {
+  List,
+  BorderColor,
+  DeleteForever,
+  Description,
+} from "@material-ui/icons";
 import {
   getNotes,
   addNote,
@@ -8,11 +13,12 @@ import {
   deleteNote,
 } from "../store/actions/notesActions";
 import { useDispatch, useSelector } from "react-redux";
+import API from "../lib/api";
 
 const Notes = (props) => {
   const dispatch = useDispatch();
 
-  let [id, setId] = useState();
+  let [current_id, setId] = useState();
   let [data, setData] = useState();
 
   const notes_list = useSelector((state) => state.notes.notes_list);
@@ -21,15 +27,19 @@ const Notes = (props) => {
     dispatch(getNotes({ room_id: 160447610 }));
   }, [dispatch]);
 
+  const handleDelete = (id) => {
+    alert(id);
+    dispatch(deleteNote({ note_id: id }));
+  };
+
   const handleSave = (e) => {
     e.preventDefault();
-    const dataform = new FormData(e.target);
-    alert("Submitted data", dataform);
-    if (id) {
-      dispatch(updateNote({ note_id: id, data: data }));
+    alert(data);
+    if (current_id) {
+      dispatch(updateNote({ note_id: current_id, data }));
       setId = 0;
     } else {
-      dispatch(addNote({ room_id: 160447610, data: data }));
+      dispatch(addNote({ room_id: 160447610, data }));
     }
     e.target.reset();
   };
@@ -42,12 +52,7 @@ const Notes = (props) => {
   //   e.target.reset();
   // };
 
-  const handleDelete = (id) => (e) => {
-    alert("id", id);
-    dispatch(deleteNote({ note_id: id }));
-  };
-
-  const handleUpdate = (id) => () => {
+  const handleUpdate = (id) => (e) => {
     dispatch(updateNote({ note_id: id, data: "Hello" }));
   };
 
@@ -58,35 +63,31 @@ const Notes = (props) => {
         <Icon
           style={{
             color: "#7289DA",
-            fontSize: "1.8rem",
+            fontSize: "2.2rem",
             fontWeight: "600",
           }}
         >
-          <List />
+          {/* <List /> */}
+          <Description />
         </Icon>
         &nbsp; Notes - {notes_list.length}
       </h1>
 
       <div className="notes-content">
-        <form
-          onSubmit={handleSave}
-          className="note-form"
-          // style={{ display: "none" }}
-        >
+        <form onSubmit={handleSave} className="note-form">
           <textarea
             className="note"
             id="new"
             name="data"
             required
+            value={data || ""}
             style={{ width: "93%" }}
-            // onKeyDown={(self = this) => {
-            //   setData = self.value;
-            // }}
-            // value={data}
+            placeholder="New Note..."
+            onChange={(e) => {
+              setData(e.target.value);
+            }}
           ></textarea>
-          {/* <button className="save-note" type="submit">
-            Save
-          </button> */}
+
           <button type="submit" className="new-note">
             Save Note +
           </button>
@@ -104,8 +105,8 @@ const Notes = (props) => {
                     <button
                       className="edit-note"
                       onClick={() => {
-                        setId = note.note_id;
-                        setData = note.data;
+                        setId(note.note_id);
+                        setData(note.data);
                       }}
                       key={note.note_id}
                     >
@@ -122,11 +123,11 @@ const Notes = (props) => {
                     <button
                       className="delete-note"
                       key={note.note_id}
-                      onClick={handleDelete(note.note_id)}
-                      // onClick={() => {
-                      //   setId = note.note_id;
-                      //   return handleDelete(id);
-                      // }}
+                      onClick={(event) => {
+                        setId(note.note_id);
+                        handleDelete(note.note_id);
+                        alert(note.note_id);
+                      }}
                     >
                       <Icon
                         style={{
@@ -166,11 +167,12 @@ const Notes = (props) => {
                     <button
                       className="delete-note"
                       key={note.note_id}
-                      onClick={handleDelete(note.note_id)}
-                      // onClick={() => {
-                      //   setId = note.note_id;
-                      //   return handleDelete(id);
-                      // }}
+                      onClick={(event) => {
+                        setId(note.note_id);
+                        alert(note.note_id);
+                        handleDelete(note.note_id);
+                        // alert(event, "_<event | id ->", note.note_id);
+                      }}
                     >
                       <Icon
                         style={{

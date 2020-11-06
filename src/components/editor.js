@@ -1,4 +1,5 @@
 import React from "react";
+import Pusher from "../pages/SyncingEditor/index";
 
 /**
  * @author
@@ -12,6 +13,9 @@ const Editor = (props) => {
         <div className="editor-heading">
           <span className="hash"># &nbsp;</span>Siddhi's Server
         </div>
+      </div>
+      <div className="sync-editor">
+        <Pusher style={{ height: "100%" }} />
       </div>
     </div>
   );

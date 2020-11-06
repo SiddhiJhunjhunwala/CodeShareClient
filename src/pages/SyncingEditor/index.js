@@ -154,43 +154,41 @@ class RichEditor extends Component {
 
     return (
       <React.Fragment>
-        <div className="room-header">
-          <div className="home">
+        <div className="room-header" style={{ background: "red" }}>
+          {/* <div className="home">
             <FontAwesomeIcon icon={faHome} />
             &nbsp; Home
           </div>
           <div className="room-name">Room name</div>
           <div className="profile">
             <FontAwesomeIcon icon={faUserCircle} /> Name
+          </div> */}
+        </div>
+        <div className="RichEditor-root">
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={this.toggleBlockType}
+          />
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={this.toggleInlineStyle}
+          />
+          <div className={className} onClick={this.focus}>
+            <Editor
+              blockStyleFn={this.getBlockStyle}
+              customStyleMap={styleMap}
+              editorState={editorState}
+              handleKeyCommand={this.handleKeyCommand}
+              keyBindingFn={this.mapKeyToEditorCommand}
+              onChange={this.onChange}
+              placeholder="What's on your mind?"
+              ref="editor"
+              spellCheck={true}
+            />
           </div>
         </div>
-        <div className="container-fluid">
-          <div style={{ height: "90vh" }} className="row">
-            <div className="RichEditor-root col-12 col-md-8">
-              <BlockStyleControls
-                editorState={editorState}
-                onToggle={this.toggleBlockType}
-              />
-              <InlineStyleControls
-                editorState={editorState}
-                onToggle={this.toggleInlineStyle}
-              />
-              <div className={className} onClick={this.focus}>
-                <Editor
-                  blockStyleFn={this.getBlockStyle}
-                  customStyleMap={styleMap}
-                  editorState={editorState}
-                  handleKeyCommand={this.handleKeyCommand}
-                  keyBindingFn={this.mapKeyToEditorCommand}
-                  onChange={this.onChange}
-                  placeholder="What's on your mind?"
-                  ref="editor"
-                  spellCheck={true}
-                />
-              </div>
-            </div>
-            <div className="col-12 col-md-4">
-              {/* style={{ background: "#b387de" }} */}
+        {/* <div className="col-12 ">
+             
               <div className="notes-header container-fluid">
                 <FontAwesomeIcon icon={faStickyNote} />
                 <h5 style={{ fontStyle: "italic", display: "inline-block" }}>
@@ -209,19 +207,12 @@ class RichEditor extends Component {
                 className="note"
               >
                 dbf jhuof lk;jkidjfioj jhgudhj huiho ...
-                {/* <div style={{ float: "right" }}>
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                  <FontAwesomeIcon icon={faDownload} />
-                  <FontAwesomeIcon icon={faCheckDouble} />
-                  <FontAwesomeIcon icon={faPen} />
-                </div> */}
+               
               </blockquote>
-            </div>
-            {/* <div className="col-12 col-md-6">
+            </div> */}
+        {/* <div className="col-12 col-md-6">
             <div dangerouslySetInnerHTML={{ __html: this.state.text }} />
           </div> */}
-          </div>
-        </div>
       </React.Fragment>
     );
   }

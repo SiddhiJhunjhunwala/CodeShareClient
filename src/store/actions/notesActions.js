@@ -25,7 +25,6 @@ export function addNote(data) {
     result
       .then((response) => {
         // console.log(response);
-        // console.log(response.data);
         dispatch({
           type: ADD_NOTE,
           // payload: response.data,
@@ -36,13 +35,13 @@ export function addNote(data) {
       });
 }
 
-export function updateNote(data) {
-  const result = API.put("/api/notes/updateNote", data);
+export function updateNote(data_id) {
+  console.log(data_id);
+  const result = API.put("/api/notes/updateNote", data_id);
   return (dispatch) =>
     result
       .then((response) => {
         // console.log(response);
-        // console.log(response.data);
         dispatch({
           type: UPDATE_NOTE,
           // payload: response.data,
@@ -54,6 +53,7 @@ export function updateNote(data) {
 }
 
 export function deleteNote(data) {
+  console.log(data);
   const result = API.delete("/api/notes/deleteNote", data, {
     headers: {
       "Content-Type": "application/json",
@@ -63,7 +63,6 @@ export function deleteNote(data) {
     result
       .then((response) => {
         console.log("response", response);
-        // console.log(response.data);
         dispatch({
           type: DELETE_NOTE,
           // payload: response.data,
