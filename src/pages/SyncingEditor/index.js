@@ -33,8 +33,14 @@ const styleMap = {
 class RichEditor extends Component {
   constructor(props) {
     super();
+    this.inputRef = React.createRef();
     this.state = { editorState: EditorState.createEmpty(), text: "" };
-    this.focus = () => this.refs.editor.focus();
+    this.focus = () => this.inputRef.current.focus();
+    // this.focus = () => this.refs.editor.focus();
+    this.onBlur = () => {
+      // console.log(this.inputRef.current.blur);
+    };
+
     this.onChange = (editorState) => {
       // update this line
       // onChange, update editor state then notify pusher of the new editorState
@@ -175,6 +181,7 @@ class RichEditor extends Component {
           />
           <div className={className} onClick={this.focus}>
             <Editor
+              onBlur={this.onBlur}
               blockStyleFn={this.getBlockStyle}
               customStyleMap={styleMap}
               editorState={editorState}
@@ -182,7 +189,7 @@ class RichEditor extends Component {
               keyBindingFn={this.mapKeyToEditorCommand}
               onChange={this.onChange}
               placeholder="What's on your mind?"
-              ref="editor"
+              ref={this.inputRef}
               spellCheck={true}
             />
           </div>
