@@ -7,7 +7,7 @@ export function getNotes(data) {
   return (dispatch) =>
     result
       .then((response) => {
-        // console.log(response);
+        // console.log("response", response);
         // console.log(response.data);
         dispatch({
           type: GET_NOTES,
@@ -36,8 +36,8 @@ export function addNote(data) {
       });
 }
 
-export function UpdateNote(data) {
-  const result = API.post("/api/notes/updateNote", data);
+export function updateNote(data) {
+  const result = API.put("/api/notes/updateNote", data);
   return (dispatch) =>
     result
       .then((response) => {
@@ -53,12 +53,16 @@ export function UpdateNote(data) {
       });
 }
 
-export function daleteNote(data) {
-  const result = API.post("/api/notes/deleteNote", data);
+export function deleteNote(data) {
+  const result = API.delete("/api/notes/deleteNote", data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   return (dispatch) =>
     result
       .then((response) => {
-        // console.log(response);
+        console.log("response", response);
         // console.log(response.data);
         dispatch({
           type: DELETE_NOTE,
