@@ -46,23 +46,24 @@ const RoomNav = (props) => {
           </div>
           <div className="notes-divider" />
           <h1 className="sec-head">Members</h1>
-
-          {participants.map((item) => {
-            return (
-              <div key={item.user_id} className="sec-content">
-                <Icon
-                  style={{
-                    color: "#f9a719",
-                    fontSize: "1.8rem",
-                    fontWeight: "600",
-                  }}
-                >
-                  <Face fontSize="large" />
-                </Icon>
-                &nbsp; {item.first_name} {item.last_name}
-              </div>
-            );
-          })}
+          <div class="participants">
+            {participants.map((item) => {
+              return (
+                <div key={item.user_id} className="sec-content">
+                  <Icon
+                    style={{
+                      color: "#f9a719",
+                      fontSize: "1.8rem",
+                      fontWeight: "600",
+                    }}
+                  >
+                    <Face fontSize="large" />
+                  </Icon>
+                  &nbsp; {item.first_name} {item.last_name}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

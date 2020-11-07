@@ -46,7 +46,7 @@ const Notes = (props) => {
   };
 
   return (
-    <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
+    <div className="notes">
       <div className="notes-header"></div>
       <h1 style={{ display: "inline-block" }} className="notes-heading">
         <Icon

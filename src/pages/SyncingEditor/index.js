@@ -162,15 +162,16 @@ class RichEditor extends Component {
             <FontAwesomeIcon icon={faUserCircle} /> Name
           </div> */}
         <div className="RichEditor-root">
-          <BlockStyleControls
-            editorState={editorState}
-            onToggle={this.toggleBlockType}
-          />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={this.toggleInlineStyle}
-          />
-          <div className="room-header" style={{ background: "transparent" }}>
+          <div className="style-controls" style={{ background: "transparent" }}>
+            <BlockStyleControls
+              editorState={editorState}
+              onToggle={this.toggleBlockType}
+            />
+            <InlineStyleControls
+              editorState={editorState}
+              onToggle={this.toggleInlineStyle}
+            />
+
             <div className="right">
               <button className="save-editor">Save</button>
             </div>

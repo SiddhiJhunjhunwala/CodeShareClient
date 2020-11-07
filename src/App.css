@@ -22,6 +22,11 @@ body {
   cursor: text;
   font-size: 16px;
   margin-top: 10px;
+  clear: both;
+
+  /* height: 100%; */
+  /* overflow-y: auto; */
+  /* padding: 0px 10px; */
 }
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
 .RichEditor-editor .public-DraftEditor-content {
@@ -54,6 +59,7 @@ body {
   margin-bottom: 5px;
   user-select: none;
   display: inline;
+  float: left;
 }
 .RichEditor-styleButton {
   color: #999;
@@ -74,6 +80,10 @@ blockquote {
   font-style: italic;
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
+}
+
+.public-DraftEditorPlaceholder-inner {
+  margin-top: 15px;
 }
 
 /* Discord version */
@@ -111,7 +121,9 @@ body {
   background-color: #43b581;
   color: #fff;
 } */
-
+#create:hover {
+  background-color: rgba(77, 69, 169, 1);
+}
 .button-nav:active {
   transform: translateY(3px);
   outline: none;
@@ -140,6 +152,11 @@ body {
   margin-bottom: 12px;
 }
 
+.participants {
+  height: 60vh;
+  overflow-y: auto;
+}
+
 .room-nav-header {
   color: #fff;
   border-bottom: 1px solid #202225;
@@ -148,6 +165,7 @@ body {
   padding: 6% 8%;
   font-size: 15px;
   cursor: default;
+  text-transform: capitalize;
 }
 .room-nav-header:hover,
 .room-nav-header:active {
@@ -157,8 +175,9 @@ body {
 .room-nav {
   background: #2f3136;
   height: 100%;
-  overflow: auto hidden;
-  text-overflow: ellipses;
+  border-right: 5px solid #2f3136;
+  /* overflow: auto hidden;
+  text-overflow: ellipses; */
 }
 
 .nav-sec {
@@ -176,10 +195,12 @@ body {
   padding: 0px 10px;
   font-family: "Montserrat", sans-serif !important;
   color: #fff;
+  cursor: default;
 }
 
 .notes {
-  overflow-y: auto;
+  background: #2f3136;
+  border-right: 5px solid #36393f;
 }
 
 .notes .notes-header {
@@ -352,7 +373,9 @@ body {
 
 .right {
   display: inline;
-  float: right;
+  margin-left: 6rem;
+  /* float: right; */
+  /* margin-left: 2rem; */
 }
 
 .save-editor:hover,
@@ -376,27 +399,36 @@ body {
 
 .sync-editor {
   height: 94vh;
+  overflow-y: auto;
+  border-right: 5px solid #36393f;
+}
+
+.style-controls {
+  position: fixed;
+  top: 6vh;
+  padding-top: 10px;
+  background: #36393f !important;
 }
 
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  box-shadow: inset 0 0 5px #36393f;
+  border-radius: 15px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: red;
-  border-radius: 10px;
+  background: #2f3136;
+  border-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
+  background: #2f3136;
 }
 
 /* MODAL */
@@ -448,7 +480,8 @@ body {
 }
 
 #name-label {
-  margin-top: 40px !important;
+  margin-top: 20px !important;
+
   text-align: left !important;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -470,6 +503,7 @@ body {
   border: none;
   transition: 0.2s all;
   cursor: pointer;
+  /* margin-top: 15px; */
 }
 .dialog-save:active {
   transform: translateY(3px);
@@ -535,4 +569,16 @@ body {
 
 .copy-link:active {
   transform: translateY(3px);
+}
+
+.rooms::-webkit-scrollbar {
+  width: 0px;
+  /* display: none; */
+}
+
+.rooms {
+  height: 82vh;
+  overflow-y: auto;
+  text-align: center;
+  /* border-right: 5px solid #202225; */
 }

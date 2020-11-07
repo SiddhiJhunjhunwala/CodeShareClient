@@ -16,16 +16,33 @@ const Main = (props) => {
   return (
     <React.Fragment>
       <Grid container>
-        <Grid container item xs={2} md={4} lg={2} style={{ height: "100vh" }}>
-          <SideNav {...props} />
-          <Grid item xs={9}>
+        <Grid container item xs={2} md={4} lg={2} style={{ height: "100%" }}>
+          <Grid item xs={3} style={{ height: "100%", overflowY: "auto" }}>
+            <SideNav {...props} />
+          </Grid>
+          <Grid
+            item
+            xs={9}
+            // style={{ height: "100%", overflowY: "auto" }}
+          >
             <RoomNav />
           </Grid>
         </Grid>
-        <Grid item xs={10} md={8} lg={7}>
+        <Grid
+          item
+          xs={10}
+          md={8}
+          lg={7}
+          style={{ height: "100vh", overflowY: "auto" }}
+        >
           <Editor />
         </Grid>
-        <Grid item xs={12} lg={3}>
+        <Grid
+          item
+          xs={12}
+          lg={3}
+          style={{ height: "100vh", overflowY: "auto" }}
+        >
           <Notes />
         </Grid>
       </Grid>
