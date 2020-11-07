@@ -4,6 +4,7 @@ import { Face } from "@material-ui/icons";
 import * as Actions from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import invite from "../images/invite.jpg";
+
 /**
  * @author
  * @function RoomNav
