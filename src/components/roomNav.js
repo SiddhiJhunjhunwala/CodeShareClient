@@ -46,7 +46,7 @@ const RoomNav = (props) => {
           </div>
           <div className="notes-divider" />
           <h1 className="sec-head">Members</h1>
-          <div class="participants">
+          <div className="participants">
             {participants.map((item) => {
               return (
                 <div key={item.user_id} className="sec-content">

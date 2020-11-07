@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Icon } from "@material-ui/core";
+import { Box, Icon, Tooltip } from "@material-ui/core";
 import NewRoomDialog from "./NewRoomDialog";
 import * as Actions from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,13 +50,18 @@ export default function SideNav(props) {
         <div className="rooms">
           {my_rooms.map((item) => {
             return (
-              <button
+              <Tooltip
                 key={item.room_id}
-                onClick={() => handleClick(item.room_id)}
-                className="button-nav"
+                placement="right-start"
+                title={item.room_name}
               >
-                {item.room_name[0]}
-              </button>
+                <button
+                  onClick={() => handleClick(item.room_id)}
+                  className="button-nav"
+                >
+                  {item.room_name[0]}
+                </button>
+              </Tooltip>
             );
           })}
         </div>
