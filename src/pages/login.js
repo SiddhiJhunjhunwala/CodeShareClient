@@ -11,7 +11,6 @@ import {
 import * as Actions from "../store/actions";
 import { useDispatch } from "react-redux";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
-import "../css/login.css";
 
 const Login = (props) => {
   const dispatch = useDispatch();

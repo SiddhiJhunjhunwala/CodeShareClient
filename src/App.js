@@ -13,7 +13,8 @@ import AuthRoute from "./components/AuthRouter";
 import Storage from "./lib/storage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Toast from "./components/Toast";
-
+import LoginPage from "./pages/login_page";
+import SignupPage from "./pages/signup_page";
 const { config } = Storage();
 config();
 
@@ -23,6 +24,7 @@ export default function App(props) {
       <Switch>
         <AuthRoute exact path="/login" component={Login} />
         <AuthRoute exact path="/signup" component={Signup} />
+
         {/* <ProtectedRoute exact path="/pusher" component={Pusher} />
         <ProtectedRoute exact path="/modal" component={ModalC} /> */}
         <ProtectedRoute exact path="/rooms/:room_id" component={Main} />
@@ -34,6 +36,8 @@ export default function App(props) {
           path="/invitation/:room_id"
           component={JoinRoomPage}
         />
+        <Route exact path="/l" component={LoginPage} />
+        <Route exact path="/s" component={SignupPage} />
         <ProtectedRoute path="/" component={PageNotFound} />
       </Switch>
     </div>
