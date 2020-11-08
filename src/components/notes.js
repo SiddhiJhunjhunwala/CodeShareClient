@@ -48,8 +48,8 @@ const Notes = (props) => {
   return (
     <div className="notes">
       <div className="notes-header"></div>
-
-      <div class="notes-scrollable">
+    
+      <div className="notes-scrollable">
         <h1 style={{ display: "inline-block" }} className="notes-heading">
           <Icon
             style={{
