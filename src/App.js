@@ -1,5 +1,5 @@
 import { React } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 // import CodeEditor from "./components/codeEditor";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
@@ -29,7 +29,6 @@ export default function App(props) {
         <ProtectedRoute exact path="/modal" component={ModalC} /> */}
         <ProtectedRoute exact path="/rooms/:room_id" component={Main} />
         {/* <ProtectedRoute exact path="/code" component={CodeEditor} /> */}
-        <Route exact path="/toast" component={Toast} />
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <ProtectedRoute
           exact
@@ -40,6 +39,7 @@ export default function App(props) {
         <Route exact path="/signup" component={SignupPage} />
         <ProtectedRoute path="/" component={PageNotFound} />
       </Switch>
+      <Toast />
     </div>
   );
 }

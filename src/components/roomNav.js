@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Icon } from "@material-ui/core";
+import { Icon, Tooltip } from "@material-ui/core";
 import { Face } from "@material-ui/icons";
 import * as Actions from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import invite from "../images/invite.jpg";
+
 /**
  * @author
  * @function RoomNav
@@ -17,6 +18,14 @@ const RoomNav = (props) => {
 
   const participants_central = useSelector((state) => state.room.participants);
   const [participants, set_participants] = useState([]);
+
+  const [copied, set_copied] = useState("Click to Copy Invite Link!");
+  const handleCopy = () => {
+    set_copied("Copied!");
+    const room_id = window.location.pathname.split("/").slice(-1)[0];
+    const room_link = `http://localhost:3000/invitation/${room_id}`;
+    navigator.clipboard.writeText(room_link);
+  };
 
   useEffect(() => {
     dispatch(Actions.getRoomParticipants(room_id));
@@ -42,11 +51,15 @@ const RoomNav = (props) => {
             <div className="invite-text">
               An adventure begins. Let's add some friends!
             </div>
-            <button className="copy-link">Invite People</button>
+            <Tooltip title={copied}>
+              <button className="copy-link" onClick={handleCopy}>
+                Invite People
+              </button>
+            </Tooltip>
           </div>
           <div className="notes-divider" />
           <h1 className="sec-head">Members</h1>
-          <div class="participants">
+          <div className="participants">
             {participants.map((item) => {
               return (
                 <div key={item.user_id} className="sec-content">
