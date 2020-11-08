@@ -211,7 +211,7 @@ class RichEditor extends Component {
                 }}
                 className="save-editor"
               >
-                Last Checkpoint
+                Checkpoint
               </button>
             </div>
           </div>

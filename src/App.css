@@ -21,7 +21,7 @@ body {
   /* border-top: 1px solid #ddd; */
   cursor: text;
   font-size: 16px;
-  margin-top: 10px;
+  margin-top: 40px;
   clear: both;
 
   /* height: 100%; */
@@ -109,6 +109,7 @@ body {
   border: none;
   font-weight: 500;
   transition: 0.1s all ease-out;
+  text-transform: uppercase;
 }
 /* purple */
 .button-nav:hover {
@@ -153,7 +154,7 @@ body {
 }
 
 .participants {
-  height: 60vh;
+  height: 70vh;
   overflow-y: auto;
 }
 
@@ -196,6 +197,9 @@ body {
   font-family: "Montserrat", sans-serif !important;
   color: #fff;
   cursor: default;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .notes {
@@ -394,15 +398,16 @@ body {
   border: 1px solid rgba(77, 69, 169, 0.8);
   border-radius: 5px;
   background-color: rgba(77, 69, 169, 0.8);
-  font-size: 16px;
-  padding: 7px 12px;
+  margin-right: 5px;
   cursor: pointer;
   transition: 0.2s all;
+  font-size: 14px;
+  padding: 5px 7px;
 }
 
 .right {
   display: inline;
-  margin-left: 6rem;
+  /* margin-left: 6rem; */
   /* float: right; */
   /* margin-left: 2rem; */
 }
@@ -437,6 +442,7 @@ body {
   top: 6vh;
   padding-top: 10px;
   background: #36393f !important;
+  padding-bottom: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -606,7 +612,7 @@ body {
 }
 
 .rooms {
-  height: 82vh;
+  height: 85vh;
   overflow-y: auto;
   text-align: center;
   /* border-right: 5px solid #202225; */
