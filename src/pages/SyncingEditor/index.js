@@ -21,7 +21,12 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getContent, saveContent, setContentModal } from "../../store/actions";
+import {
+  getContent,
+  saveContent,
+  setContentModal,
+  showToast,
+} from "../../store/actions";
 
 const styleMap = {
   CODE: {
@@ -191,7 +196,10 @@ class RichEditor extends Component {
 
             <div className="right">
               <button
-                onClick={() => this.handleSaveContent(this.state.editorState)}
+                onClick={() => {
+                  this.handleSaveContent(this.state.editorState);
+                  this.props.showToast("Saved!", "success");
+                }}
                 className="save-editor"
               >
                 Save
@@ -296,7 +304,12 @@ const mapStateToProps = (state) => ({
   text: state.content.text,
 });
 
-const mapActionToProps = { getContent, setContentModal, saveContent };
+const mapActionToProps = {
+  getContent,
+  setContentModal,
+  saveContent,
+  showToast,
+};
 
 RichEditor.propTypes = {
   modalOpen: PropTypes.bool,
