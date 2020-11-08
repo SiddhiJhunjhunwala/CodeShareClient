@@ -10,7 +10,6 @@ import {
 import * as Actions from "../store/actions";
 import { useDispatch } from "react-redux";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
-import "../css/signup.css";
 
 const Signup = (props) => {
   const dispatch = useDispatch();

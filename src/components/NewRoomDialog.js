@@ -47,13 +47,13 @@ export default function FormDialog() {
                   Make it and check it out!
                   {/* Enter the name of the new Room to be created: */}
                 </div>
-                <div id="name-label">Type your room name here...</div>
+                <div id="name-label">Room Name :</div>
                 <input
                   autoFocus
                   margin="dense"
                   id="name"
                   label="Room Name"
-                  placeholder="Room Name"
+                  placeholder="Type your room name here..."
                   fullWidth
                   value={room_name}
                   onChange={handleChange}
