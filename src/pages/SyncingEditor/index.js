@@ -63,7 +63,7 @@ class RichEditor extends Component {
     this.toggleBlockType = this._toggleBlockType.bind(this);
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.getBlockStyle = this._getBlockStyle.bind(this);
-    this.handleSaveContent(this.state.editorState);
+    // this.handleSaveContent(this.state.editorState);
   }
 
   componentWillMount() {
@@ -141,11 +141,11 @@ class RichEditor extends Component {
   }
 
   handleSaveContent(editorState) {
-    let text = "";
+    let toSend = "";
     convertToRaw(editorState.getCurrentContent()).blocks.forEach((block) => {
-      text += block.text + "\n";
+      toSend = toSend + block.text + " ";
     });
-    saveContent(text);
+    saveContent(toSend);
   }
 
   _notifyPusher(text) {
