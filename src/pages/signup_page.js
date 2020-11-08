@@ -80,7 +80,7 @@ const SignupPage = (props) => {
                 <Grid item xs={12}>
                   <label
                     for="tel"
-                    onChange={handleChange("phone")}
+
                     //    pattern
                   >
                     Contact No. (optional)
@@ -89,6 +89,7 @@ const SignupPage = (props) => {
                     type="tel"
                     id="tel"
                     style={{ marginBottom: "10px" }}
+                    onChange={handleChange("phone")}
                   ></input>
                 </Grid>
                 <Grid item xs={12}>
