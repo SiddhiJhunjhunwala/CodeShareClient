@@ -94,7 +94,7 @@ const LoginPage = (props) => {
                     Login
                   </button>
 
-                  <Link to="/s">
+                  <Link to="/signup">
                     <div className="button-bottom-signup">
                       Create an account?
                     </div>

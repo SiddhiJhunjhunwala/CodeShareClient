@@ -22,8 +22,8 @@ export default function App(props) {
   return (
     <div className="App">
       <Switch>
-        <AuthRoute exact path="/login" component={Login} />
-        <AuthRoute exact path="/signup" component={Signup} />
+        {/* <AuthRoute exact path="/login" component={Login} />
+        <AuthRoute exact path="/signup" component={Signup} /> */}
 
         {/* <ProtectedRoute exact path="/pusher" component={Pusher} />
         <ProtectedRoute exact path="/modal" component={ModalC} /> */}
@@ -36,8 +36,8 @@ export default function App(props) {
           path="/invitation/:room_id"
           component={JoinRoomPage}
         />
-        <Route exact path="/l" component={LoginPage} />
-        <Route exact path="/s" component={SignupPage} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/signup" component={SignupPage} />
         <ProtectedRoute path="/" component={PageNotFound} />
       </Switch>
     </div>

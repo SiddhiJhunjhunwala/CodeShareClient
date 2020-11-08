@@ -131,7 +131,7 @@ const SignupPage = (props) => {
                     SignUp
                   </button>
 
-                  <Link to="/l">
+                  <Link to="/login">
                     <div className="button-bottom-signup">
                       Already have an account?
                     </div>
