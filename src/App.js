@@ -1,8 +1,8 @@
 import { React } from "react";
 import { Switch, Route } from "react-router-dom";
 // import CodeEditor from "./components/codeEditor";
-import Login from "./pages/login";
-import Signup from "./pages/signup";
+// import Login from "./pages/login";
+// import Signup from "./pages/signup";
 import Main from "./pages/main";
 // import ModalC from "./components/modal";
 import PageNotFound from "./pages/404";
@@ -36,8 +36,8 @@ export default function App(props) {
           path="/invitation/:room_id"
           component={JoinRoomPage}
         />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/signup" component={SignupPage} />
+        <AuthRoute exact path="/login" component={LoginPage} />
+        <AuthRoute exact path="/signup" component={SignupPage} />
         <ProtectedRoute path="/" component={PageNotFound} />
       </Switch>
     </div>
