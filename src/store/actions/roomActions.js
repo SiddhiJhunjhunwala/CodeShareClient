@@ -111,7 +111,6 @@ export const getMyRooms = (room_name) => {
   return (dispatch) =>
     result
       .then((response) => {
-        console.log(response);
         dispatch({
           type: GET_MY_ROOMS,
           payload: response.data,

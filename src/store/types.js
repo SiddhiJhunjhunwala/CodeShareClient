@@ -15,5 +15,8 @@ export const SET_CURRENT_ROOM = "SET_CURRENT_ROOM";
 export const GET_MY_ROOMS = "GET_MY_ROOMS";
 export const CREATE_ROOM_DIALOG = "CREATE_ROOM_DIALOG";
 
+export const SET_CONTENT_MODAL = "SET_CONTENT_MODAL";
+export const SET_CONTENT_TEXT = "SET_CONTENT_TEXT";
+
 export const OPEN_TOAST = "OPEN_TOAST";
 export const CLOSE_TOAST = "CLOSE_TOAST";

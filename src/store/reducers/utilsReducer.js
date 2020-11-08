@@ -2,7 +2,7 @@ import { OPEN_TOAST, CLOSE_TOAST } from "../types";
 const initialState = {
   toastOpen: false,
   toastMessage: "",
-  toastType: "",
+  toastType: "success",
 };
 
 export const utils = (state = initialState, action) => {
