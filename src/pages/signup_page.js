@@ -108,7 +108,7 @@ const SignupPage = (props) => {
                     id="password"
                     style={{ marginTop: "0", marginBottom: "5px" }}
                     required
-                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+                    // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
                     type={values.showPassword ? "text" : "password"}
                     value={values.password}
                     onChange={handleChange("password")}
