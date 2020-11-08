@@ -46,132 +46,134 @@ const Notes = (props) => {
   };
 
   return (
-    <div className="notes" style={{ background: "#2F3136", height: "100%" }}>
+    <div className="notes">
       <div className="notes-header"></div>
-      <h1 style={{ display: "inline-block" }} className="notes-heading">
-        <Icon
-          style={{
-            color: "#7289DA",
-            fontSize: "2.2rem",
-            fontWeight: "600",
-          }}
-        >
-          {/* <List /> */}
-          <Description />
-        </Icon>
-        &nbsp; Notes - {notes_list.length}
-      </h1>
 
-      <div className="notes-content">
-        <form onSubmit={handleSave} className="note-form">
-          <textarea
-            autoFocus
-            className="note"
-            id="new"
-            name="data"
-            required
-            value={data || ""}
-            style={{ width: "93%" }}
-            placeholder="New Note..."
-            onChange={(e) => {
-              setData(e.target.value);
+      <div class="notes-scrollable">
+        <h1 style={{ display: "inline-block" }} className="notes-heading">
+          <Icon
+            style={{
+              color: "#7289DA",
+              fontSize: "2.2rem",
+              fontWeight: "600",
             }}
-          ></textarea>
+          >
+            {/* <List /> */}
+            <Description />
+          </Icon>
+          &nbsp; Notes - {notes_list.length}
+        </h1>
+        <div className="notes-content">
+          <form onSubmit={handleSave} className="note-form">
+            <textarea
+              autoFocus
+              className="note"
+              id="new"
+              name="data"
+              required
+              value={data || ""}
+              style={{ width: "93%" }}
+              placeholder="New Note..."
+              onChange={(e) => {
+                setData(e.target.value);
+              }}
+            ></textarea>
 
-          <button type="submit" className="new-note">
-            Save Note +
-          </button>
-        </form>
+            <button type="submit" className="new-note">
+              Save Note +
+            </button>
+          </form>
 
-        {/* <div className="notes-divider" /> */}
-        {notes_list.map((note) => {
-          return (
-            <div key={note.note_id}>
-              {note.data.length > 400 ? (
-                <div className="note">
-                  {note.data.substring(0, 400)}
-                  <div className="read-more">&nbsp;Read more...</div>
-                  <div className="note-icons">
-                    <button
-                      className="edit-note"
-                      onClick={() => {
-                        setId(note.note_id);
-                        setData(note.data);
-                      }}
-                    >
-                      <Icon
-                        style={{
-                          color: "#7289DA",
-                          fontSize: "1.8rem",
-                          fontWeight: "600",
+          {/* <div className="notes-divider" /> */}
+          {notes_list.map((note) => {
+            return (
+              <div key={note.note_id}>
+                {note.data.length > 400 ? (
+                  <div className="note">
+                    {note.data.substring(0, 400)}
+                    <div className="read-more">&nbsp;Read more...</div>
+                    <div className="note-icons">
+                      <button
+                        className="edit-note"
+                        onClick={() => {
+                          setId(note.note_id);
+                          setData(note.data);
                         }}
                       >
-                        <BorderColor />
-                      </Icon>
-                    </button>
-                    <button
-                      className="delete-note"
-                      onClick={(event) => {
-                        setId(note.note_id);
-                        handleDelete(note.note_id);
-                      }}
-                    >
-                      <Icon
-                        style={{
-                          color: "red",
-                          fontSize: "1.8rem",
-                          fontWeight: "600",
+                        <Icon
+                          style={{
+                            color: "#7289DA",
+                            fontSize: "1.8rem",
+                            fontWeight: "600",
+                          }}
+                        >
+                          <BorderColor />
+                        </Icon>
+                      </button>
+                      <button
+                        className="delete-note"
+                        onClick={(event) => {
+                          setId(note.note_id);
+                          handleDelete(note.note_id);
                         }}
                       >
-                        <DeleteForever />
-                      </Icon>
-                    </button>
+                        <Icon
+                          style={{
+                            color: "red",
+                            fontSize: "1.8rem",
+                            fontWeight: "600",
+                          }}
+                        >
+                          <DeleteForever />
+                        </Icon>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="note">
-                  {note.data}
-                  <div className="note-icons">
-                    <button
-                      className="edit-note"
-                      onClick={() => {
-                        setId(note.note_id);
-                        setData(note.data);
-                      }}
-                    >
-                      <Icon
-                        style={{
-                          color: "#7289DA",
-                          fontSize: "1.8rem",
-                          fontWeight: "600",
+                ) : (
+                  <div className="note">
+                    {note.data}
+                    <div className="note-icons">
+                      <button
+                        className="edit-note"
+                        onClick={() => {
+                          setId(note.note_id);
+                          setData(note.data);
                         }}
                       >
-                        <BorderColor />
-                      </Icon>
-                    </button>
-                    <button
-                      className="delete-note"
-                      onClick={(event) => {
-                        setId(note.note_id);
-                        handleDelete(note.note_id);
-                      }}
-                    >
-                      <Icon
-                        style={{
-                          color: "red",
-                          fontSize: "1.8rem",
-                          fontWeight: "600",
+                        <Icon
+                          style={{
+                            color: "#7289DA",
+                            fontSize: "1.8rem",
+                            fontWeight: "600",
+                          }}
+                        >
+                          <BorderColor />
+                        </Icon>
+                      </button>
+                      <button
+                        className="delete-note"
+                        onClick={(event) => {
+                          setId(note.note_id);
+                          handleDelete(note.note_id);
                         }}
                       >
-                        <DeleteForever />
-                      </Icon>
-                    </button>
+                        <Icon
+                          style={{
+                            color: "red",
+                            fontSize: "1.8rem",
+                            fontWeight: "600",
+                          }}
+                        >
+                          <DeleteForever />
+                        </Icon>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

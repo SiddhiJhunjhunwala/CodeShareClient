@@ -13,6 +13,20 @@ import Pusher from "pusher-js";
 import axios from "axios";
 import BlockStyleControls from "./blockStyleControls";
 import InlineStyleControls from "./inlineStylesControls";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import {
+  getContent,
+  saveContent,
+  setContentModal,
+  showToast,
+} from "../../store/actions";
 
 const styleMap = {
   CODE: {
@@ -29,7 +43,6 @@ class RichEditor extends Component {
     this.inputRef = React.createRef();
     this.state = { editorState: EditorState.createEmpty(), text: "" };
     this.focus = () => this.inputRef.current.focus();
-    // this.focus = () => this.refs.editor.focus();
     this.onBlur = () => {
       // console.log(this.inputRef.current.blur);
     };
@@ -50,6 +63,7 @@ class RichEditor extends Component {
     this.toggleBlockType = this._toggleBlockType.bind(this);
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.getBlockStyle = this._getBlockStyle.bind(this);
+    // this.handleSaveContent(this.state.editorState);
   }
 
   componentWillMount() {
@@ -126,6 +140,14 @@ class RichEditor extends Component {
     );
   }
 
+  handleSaveContent(editorState) {
+    let toSend = "";
+    convertToRaw(editorState.getCurrentContent()).blocks.forEach((block) => {
+      toSend = toSend + block.text + " ";
+    });
+    saveContent(toSend);
+  }
+
   _notifyPusher(text) {
     axios.post("http://localhost:5000/api/pusher/save-text", { text });
   }
@@ -162,17 +184,35 @@ class RichEditor extends Component {
             <FontAwesomeIcon icon={faUserCircle} /> Name
           </div> */}
         <div className="RichEditor-root">
-          <BlockStyleControls
-            editorState={editorState}
-            onToggle={this.toggleBlockType}
-          />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={this.toggleInlineStyle}
-          />
-          <div className="room-header" style={{ background: "transparent" }}>
+          <div className="style-controls" style={{ background: "transparent" }}>
+            <BlockStyleControls
+              editorState={editorState}
+              onToggle={this.toggleBlockType}
+            />
+            <InlineStyleControls
+              editorState={editorState}
+              onToggle={this.toggleInlineStyle}
+            />
+
             <div className="right">
-              <button className="save-editor">Save</button>
+              <button
+                onClick={() => {
+                  this.handleSaveContent(this.state.editorState);
+                  this.props.showToast("Saved!", "success");
+                }}
+                className="save-editor"
+              >
+                Save
+              </button>
+              <button
+                onClick={() => {
+                  this.props.getContent();
+                  this.props.setContentModal(true);
+                }}
+                className="save-editor"
+              >
+                Last Checkpoint
+              </button>
             </div>
           </div>
           <div className={className} onClick={this.focus}>
@@ -216,8 +256,63 @@ class RichEditor extends Component {
         {/* <div className="col-12 col-md-6">
             <div dangerouslySetInnerHTML={{ __html: this.state.text }} />
           </div> */}
+
+        {/* Dialog!!!!!!!!!!!!!!!! */}
+        <div>
+          {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            Open responsive dialog
+          </Button> */}
+          <Dialog
+            // fullScreen={fullScreen}
+            fullWidth={true}
+            open={this.props.modalOpen}
+            onClose={() => this.props.setContentModal(false)}
+            aria-labelledby="responsive-dialog-title"
+          >
+            <DialogTitle id="responsive-dialog-title">
+              Last Saved Content
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>{this.props.text}</DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                autoFocus
+                onClick={() => this.props.setContentModal(false)}
+                color="primary"
+              >
+                Disagree
+              </Button>
+              <Button
+                onClick={() => this.props.setContentModal(false)}
+                color="primary"
+                autoFocus
+              >
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+        {/* Dialog Ends !!!!!!!!!!!!!!!!!!!1 */}
       </React.Fragment>
     );
   }
 }
-export default RichEditor;
+// export default RichEditor;
+const mapStateToProps = (state) => ({
+  modalOpen: state.content.modalOpen,
+  text: state.content.text,
+});
+
+const mapActionToProps = {
+  getContent,
+  setContentModal,
+  saveContent,
+  showToast,
+};
+
+RichEditor.propTypes = {
+  modalOpen: PropTypes.bool,
+  text: PropTypes.string,
+};
+export default connect(mapStateToProps, mapActionToProps)(RichEditor);

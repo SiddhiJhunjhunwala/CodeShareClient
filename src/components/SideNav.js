@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Grid, Box, Icon } from "@material-ui/core";
+import { Box, Icon, Tooltip } from "@material-ui/core";
 import NewRoomDialog from "./NewRoomDialog";
 import * as Actions from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,47 +20,52 @@ export default function SideNav(props) {
   }, [dispatch]);
   return (
     <>
-      <Grid item xs={3}>
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          className="sidenavbar"
-        >
-          {/* Logo */}
-          <button className="button-nav">
-            <Icon></Icon>
-          </button>
-          {/* division */}
-          <div className="divider"></div>
-          {/* Rooms */}
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        className="sidenavbar"
+      >
+        {/* Logo */}
+        <button className="button-nav">
+          <Icon></Icon>
+        </button>
+        {/* division */}
+        <div className="divider"></div>
+        {/* Create room  */}
+        <button className="button-nav" id="create">
+          <Icon
+            style={{
+              color: "#43B581",
+              fontSize: "2.1rem",
+              fontWeight: "600",
+            }}
+            onClick={() => dispatch(Actions.setDialog(true))}
+          >
+            +
+          </Icon>
+        </button>
+        {/* Rooms */}
+
+        <div className="rooms">
           {my_rooms.map((item) => {
             return (
-              <button
+              <Tooltip
                 key={item.room_id}
-                onClick={() => handleClick(item.room_id)}
-                className="button-nav"
+                placement="right-start"
+                title={item.room_name}
               >
-                {item.room_name[0]}
-              </button>
+                <button
+                  onClick={() => handleClick(item.room_id)}
+                  className="button-nav"
+                >
+                  {item.room_name[0]}
+                </button>
+              </Tooltip>
             );
           })}
-
-          {/* Create room  */}
-          <button className="button-nav" id="create">
-            <Icon
-              style={{
-                color: "#43B581",
-                fontSize: "2.1rem",
-                fontWeight: "600",
-              }}
-              onClick={() => dispatch(Actions.setDialog(true))}
-            >
-              +
-            </Icon>
-          </button>
-        </Box>
-      </Grid>
+        </div>
+      </Box>
       <NewRoomDialog />
     </>
   );

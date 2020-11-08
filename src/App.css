@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  font-family: "Muli", sans-serif; /* add this line to the body tag */
+  font-family: "Muli", sans-serif;
 }
 
 .RichEditor-root {
@@ -22,6 +22,11 @@ body {
   cursor: text;
   font-size: 16px;
   margin-top: 10px;
+  clear: both;
+
+  /* height: 100%; */
+  /* overflow-y: auto; */
+  /* padding: 0px 10px; */
 }
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
 .RichEditor-editor .public-DraftEditor-content {
@@ -54,6 +59,7 @@ body {
   margin-bottom: 5px;
   user-select: none;
   display: inline;
+  float: left;
 }
 .RichEditor-styleButton {
   color: #999;
@@ -74,6 +80,10 @@ blockquote {
   font-style: italic;
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
+}
+
+.public-DraftEditorPlaceholder-inner {
+  margin-top: 15px;
 }
 
 /* Discord version */
@@ -111,7 +121,9 @@ body {
   background-color: #43b581;
   color: #fff;
 } */
-
+#create:hover {
+  background-color: rgba(77, 69, 169, 1);
+}
 .button-nav:active {
   transform: translateY(3px);
   outline: none;
@@ -140,6 +152,11 @@ body {
   margin-bottom: 12px;
 }
 
+.participants {
+  height: 60vh;
+  overflow-y: auto;
+}
+
 .room-nav-header {
   color: #fff;
   border-bottom: 1px solid #202225;
@@ -148,6 +165,7 @@ body {
   padding: 6% 8%;
   font-size: 15px;
   cursor: default;
+  text-transform: capitalize;
 }
 .room-nav-header:hover,
 .room-nav-header:active {
@@ -157,8 +175,9 @@ body {
 .room-nav {
   background: #2f3136;
   height: 100%;
-  overflow: auto hidden;
-  text-overflow: ellipses;
+  border-right: 5px solid #2f3136;
+  /* overflow: auto hidden;
+  text-overflow: ellipses; */
 }
 
 .nav-sec {
@@ -176,10 +195,36 @@ body {
   padding: 0px 10px;
   font-family: "Montserrat", sans-serif !important;
   color: #fff;
+  cursor: default;
 }
 
 .notes {
+  background: #2f3136;
+  /* border-right: 5px solid #36393f; */
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.notes-scrollable {
+  height: 94vh;
   overflow-y: auto;
+}
+
+.notes-scrollable::-webkit-scrollbar-track {
+  background-color: #36393f;
+}
+
+::-webkit-scrollbar {
+  background-color: #28292c;
+  width: 20px;
+}
+
+.notes-scrollable::-webkit-scrollbar-thumb {
+  background-color: #5a5d63;
+}
+
+.notes-scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: #6e7175;
 }
 
 .notes .notes-header {
@@ -251,6 +296,11 @@ body {
 #new {
   height: 20vh;
   cursor: text;
+}
+#new:focus,
+#new:focus {
+  border: #cccccc;
+  outline: none;
 }
 
 .note:hover {
@@ -352,7 +402,9 @@ body {
 
 .right {
   display: inline;
-  float: right;
+  margin-left: 6rem;
+  /* float: right; */
+  /* margin-left: 2rem; */
 }
 
 .save-editor:hover,
@@ -376,27 +428,36 @@ body {
 
 .sync-editor {
   height: 94vh;
+  overflow-y: auto;
+  border-right: 5px solid #36393f;
+}
+
+.style-controls {
+  position: fixed;
+  top: 6vh;
+  padding-top: 10px;
+  background: #36393f !important;
 }
 
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  box-shadow: inset 0 0 5px #36393f;
+  border-radius: 15px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: red;
-  border-radius: 10px;
+  background: #2f3136;
+  border-radius: 15px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
+  background: #2f3136;
 }
 
 /* MODAL */
@@ -448,7 +509,8 @@ body {
 }
 
 #name-label {
-  margin-top: 40px !important;
+  margin-top: 20px !important;
+
   text-align: left !important;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -470,6 +532,7 @@ body {
   border: none;
   transition: 0.2s all;
   cursor: pointer;
+  /* margin-top: 15px; */
 }
 .dialog-save:active {
   transform: translateY(3px);
@@ -535,4 +598,148 @@ body {
 
 .copy-link:active {
   transform: translateY(3px);
+}
+
+.rooms::-webkit-scrollbar {
+  width: 0px;
+  /* display: none; */
+}
+
+.rooms {
+  height: 82vh;
+  overflow-y: auto;
+  text-align: center;
+  /* border-right: 5px solid #202225; */
+}
+
+/* SIgnup page */
+.signup-page {
+  width: 100vw;
+  height: 100vh;
+  background-color: yellow;
+}
+
+.signup-block {
+  background-color: #363940;
+  color: #72767d;
+  width: 50%;
+  padding: 32px 0px 50px 60px;
+  font-size: 18px;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 0px auto;
+  position: relative;
+  top: 10%;
+}
+
+.signup-title {
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 25px;
+  cursor: default;
+  margin-left: 30%;
+}
+
+.signup-wrapper {
+  width: 100%;
+}
+
+.signup-form-block {
+  width: 100%;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.signup-form input {
+  width: 90%;
+  margin: 10px 0px 20px 0px;
+  padding: 10px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #0000001a;
+  color: #dcddde;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  outline: 0;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.signup-form input :hover {
+  border-color: #000000;
+}
+.signup-form input :focus {
+  border-color: #00b0f4;
+}
+
+#first_name,
+#last_name {
+  width: 100%;
+}
+
+#last_name,
+#last_name_label {
+  margin-left: 15%;
+}
+
+.signup-form label {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #8e9297;
+  cursor: default;
+  width: 100%;
+}
+
+.submit-signup {
+  /* margin-top: 30px; */
+  margin-top: 10px;
+  color: #fff;
+  background-color: #7289da;
+  line-height: 24px;
+  width: 90%;
+  text-align: center;
+  height: 44px;
+  min-width: 130px;
+  min-height: 44px;
+  transition: background-color 0.17s ease, color 0.17s ease, transform 0.2s;
+  border-radius: 3px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.submit-signup:hover {
+  background-color: #667ed3;
+}
+
+.submit:active {
+  background-color: #00b0f4;
+  transform: translateY(3px);
+}
+.button-bottom-signup {
+  color: #7289da;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.button-bottom-signup:hover,
+.button-bottom-signup:active {
+  text-decoration: underline;
+}
+
+.login-block {
+  width: 40%;
+  top: 20%;
+  padding-bottom: 30px;
+}
+
+.login-title {
+  margin-bottom: 25px;
+}
+
+.login-form {
+  margin-bottom: 15px;
 }

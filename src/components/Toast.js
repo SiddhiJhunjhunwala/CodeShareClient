@@ -1,66 +1,49 @@
-// import React from "react";
-// import { withSnackbar } from "material-ui-toast";
+import React from "react";
+import { Snackbar, IconButton } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
+import Collapse from "@material-ui/core/Collapse";
+import { Alert } from "@material-ui/lab";
+import { useSelector, useDispatch } from "react-redux";
+import * as Actions from "../store/actions";
 
-// /**
-//  * @author
-//  * @function Toast
-//  **/
+const Toast = () => {
+  const dispatch = useDispatch();
+  const type = useSelector((state) => state.utils.toastType);
+  const open = useSelector((state) => state.utils.toastOpen);
+  const message = useSelector((state) => state.utils.toastMessage);
 
-// const Toast = (props) => {
-//   const handleClick = (variant) => {
-//     const { snackbar } = props;
-//     const options = {
-//       message: variant,
-//       action: false,
-//       handleAction: () => {
-//         /* do something... */
-//       },
-//       close: true,
-//       variant: variant,
-//     };
-//     snackbar.show(options);
-//   };
+  return (
+    <React.Fragment>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        open
+        autoHideDuration={6000}
+      >
+        <Collapse in={open}>
+          <Alert
+            severity={type}
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  dispatch(Actions.closeToast());
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+          >
+            {message}
+          </Alert>
+        </Collapse>
+      </Snackbar>
+    </React.Fragment>
+  );
+};
 
-//   return (
-//     <div>
-//       <Button
-//         variant="contained"
-//         color="primary"
-//         onClick={() => {
-//           this.handleClick("success");
-//         }}
-//       >
-//         Open Success Toast
-//       </Button>
-//       <Button
-//         variant="contained"
-//         color="secondary"
-//         onClick={() => {
-//           this.handleClick("error");
-//         }}
-//       >
-//         Open Error Toast
-//       </Button>
-//       <Button
-//         variant="contained"
-//         color="primary"
-//         onClick={() => {
-//           this.handleClick("warning");
-//         }}
-//       >
-//         Open Warning Toast
-//       </Button>
-//       <Button
-//         variant="contained"
-//         color="secondary"
-//         onClick={() => {
-//           this.handleClick("info");
-//         }}
-//       >
-//         Open info Toast
-//       </Button>
-//     </div>
-//   );
-// };
-
-// export default Toast;
+export default Toast;
