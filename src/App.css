@@ -622,7 +622,9 @@ body {
 .signup-page {
   width: 100vw;
   height: 100vh;
-  background-color: yellow;
+  /* background-color: yellow; */
+  background-image: url("./images/jezael-melgoza-layMbSJ3YOE-unsplash.jpg");
+  background-size: cover;
 }
 
 .signup-block {
@@ -796,4 +798,11 @@ body {
 }
 .modal-close:active {
   transform: translateY(3px);
+}
+
+.logo {
+  background-image: url("./images//cookie-the-pom-gySMaocSdqs-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 40%;
 }
