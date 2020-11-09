@@ -119,3 +119,23 @@ export const verifyToken = (token, history) => {
       })
       .catch((Exception) => {});
 };
+
+export const getCurrentUser = () => {
+  const token = localStorage.getItem("token");
+  const result = API.post("/api/users/getCurrentUser", { token });
+
+  return (dispatch) =>
+    result
+      .then((response) => {
+        // console.log(response);
+        if (response.status === 200) {
+          dispatch({
+            type: SET_CURRENT_USER,
+            payload: response.data.user,
+          });
+        }
+      })
+      .catch((Exception) => {
+        console.log(Exception);
+      });
+};

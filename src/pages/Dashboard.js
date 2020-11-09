@@ -11,8 +11,11 @@ export default function Dashboard(props) {
 
   const myRooms = useSelector((state) => state.room.my_rooms);
   const preview = useSelector((state) => state.content.preview);
+  const user = useSelector((state) => state.user.current_user);
+
   useEffect(() => {
     dispatch(Actions.getMyRooms);
+    dispatch(Actions.getCurrentUser());
   }, [dispatch]);
 
   useEffect(() => {
@@ -50,13 +53,12 @@ export default function Dashboard(props) {
                   <h1 className="sec-head">
                     <div className="profile-pic"></div>
                     <div className="details">
-                      Siddhi Jhunjhunwala
+                      {user.first_name} {user.last_name}
                       <br />
                       <br />
-                      siddhi2000jhun@gmail.com
+                      {user.email}
                       <br />
                       <br />
-                      7265462659
                     </div>
                   </h1>
                   <div className="participants"></div>

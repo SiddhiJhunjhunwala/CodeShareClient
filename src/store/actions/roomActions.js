@@ -105,7 +105,7 @@ export const joinRoom = (room_id) => {
       });
 };
 
-export const getMyRooms = (room_name) => {
+export const getMyRooms = () => {
   const result = API.get("/api/room/getMyRooms");
 
   return (dispatch) =>
