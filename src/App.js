@@ -5,7 +5,7 @@ import { Switch } from "react-router-dom";
 // import Signup from "./pages/signup";
 import Main from "./pages/main";
 // import ModalC from "./components/modal";
-import PageNotFound from "./pages/404";
+// import PageNotFound from "./pages/404";
 import Dashboard from "./pages/Dashboard";
 // import Pusher from "./pages/SyncingEditor/index";
 import JoinRoomPage from "./pages/joinRoom";
@@ -22,8 +22,8 @@ export default function App(props) {
   return (
     <div className="App">
       <Switch>
-        {/* <AuthRoute exact path="/login" component={Login} />
-        <AuthRoute exact path="/signup" component={Signup} /> */}
+        <AuthRoute exact path="/login" component={LoginPage} />
+        <AuthRoute exact path="/signup" component={SignupPage} />
 
         {/* <ProtectedRoute exact path="/pusher" component={Pusher} />
         <ProtectedRoute exact path="/modal" component={ModalC} /> */}
@@ -35,9 +35,8 @@ export default function App(props) {
           path="/invitation/:room_id"
           component={JoinRoomPage}
         />
-        <AuthRoute exact path="/login" component={LoginPage} />
-        <AuthRoute exact path="/signup" component={SignupPage} />
-        <ProtectedRoute path="/" component={PageNotFound} />
+
+        <ProtectedRoute path="/" component={Dashboard} />
       </Switch>
       <Toast />
     </div>

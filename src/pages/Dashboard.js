@@ -4,6 +4,7 @@ import { ViewComfy, Person } from "@material-ui/icons";
 import SideNav from "../components/SideNav";
 import { useDispatch, useSelector } from "react-redux";
 import * as Actions from "../store/actions";
+import history from "../history";
 
 export default function Dashboard(props) {
   const dispatch = useDispatch();
@@ -101,7 +102,16 @@ export default function Dashboard(props) {
           <div className="notes">
             <div className="notes-scrollable">
               <h1 className="notes-heading">
-                <button className="logout">logout</button>
+                <button
+                  className="logout"
+                  onClick={() => {
+                    localStorage.setItem("token", "");
+                    history.push("/login");
+                    window.location.reload();
+                  }}
+                >
+                  logout
+                </button>
               </h1>
               <div className="notes-content"></div>
             </div>
