@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Icon } from "@material-ui/core";
 import { ViewComfy, Person } from "@material-ui/icons";
 import SideNav from "../components/SideNav";
+import { useDispatch, useSelector } from "react-redux";
+import * as Actions from "../store/actions";
 
 export default function Dashboard(props) {
+  const dispatch = useDispatch();
+
+  const myRooms = useSelector((state) => state.room.my_rooms);
+  const preview = useSelector((state) => state.content.preview);
+  useEffect(() => {
+    dispatch(Actions.getMyRooms);
+  }, [dispatch]);
+
+  useEffect(() => {
+    myRooms.forEach((element) => {
+      dispatch(Actions.getCustomContent(element.room_id));
+    });
+    preview.reverse();
+    //eslint-disable-next-line
+  }, [myRooms, dispatch]);
+
   return (
     <React.Fragment>
       <Grid container>
@@ -64,86 +82,16 @@ export default function Dashboard(props) {
               </h2>
               <div className="user-rooms">
                 <Grid container style={{ width: "100%", margin: "0px auto" }}>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <h4 className="user-room-name">Room Name</h4>
-                    <div className="user-room">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy ...
-                    </div>
-                  </Grid>
+                  {myRooms.map((room, idx) => {
+                    return (
+                      <Grid key={idx} item xs={2}>
+                        <a href={"/rooms/" + room.room_id}>
+                          <h4 className="user-room-name">{room.room_name}</h4>
+                          <div className="user-room">{preview[idx]}</div>
+                        </a>
+                      </Grid>
+                    );
+                  })}
                 </Grid>
               </div>
             </div>
@@ -153,7 +101,7 @@ export default function Dashboard(props) {
           <div className="notes">
             <div className="notes-scrollable">
               <h1 className="notes-heading">
-                <button class="logout">logout</button>
+                <button className="logout">logout</button>
               </h1>
               <div className="notes-content"></div>
             </div>

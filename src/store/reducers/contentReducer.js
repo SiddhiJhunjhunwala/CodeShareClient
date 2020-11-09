@@ -1,7 +1,8 @@
-import { SET_CONTENT_MODAL, SET_CONTENT_TEXT } from "../types";
+import { SET_CONTENT_MODAL, SET_CONTENT_TEXT, SET_PREVIEW } from "../types";
 const initialState = {
   modalOpen: false,
   text: "",
+  preview: [],
 };
 
 export const content = (state = initialState, action) => {
@@ -16,6 +17,12 @@ export const content = (state = initialState, action) => {
         ...state,
         modalOpen: action.payload,
       };
+    case SET_PREVIEW: {
+      return {
+        ...state,
+        preview: [action.payload, ...state.preview],
+      };
+    }
 
     default:
       return state;
