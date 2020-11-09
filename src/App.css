@@ -806,3 +806,119 @@ body {
   background-repeat: no-repeat;
   background-position-x: 40%;
 }
+
+.dashboard {
+  width: 100%;
+  height: 100%;
+  background-color: #36393f;
+  border-left: 1px solid #36393f;
+}
+
+.profile {
+  width: 100%;
+  background-color: #36393f;
+}
+
+.profile-pic {
+  background-image: url("./images/placeholder.jpg");
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-size: cover;
+  margin: 40px auto;
+}
+
+.details {
+  /* padding: 10px; */
+  /* background-color: #fff; */
+  /* position: relative; */
+  /* top: 15%; */
+  /* color: #5e2ced; */
+  /* color: rgb(67, 181, 129, 1); */
+  /* color: #00c99b; */
+  /* color: #cccccc; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.my-detail {
+  font-size: 1.3rem;
+  margin-top: 20px;
+}
+
+.logout {
+  background-color: #474192;
+  color: white;
+  border-radius: 3px;
+  padding: 8px 18px;
+  border: 0;
+  outline: 0;
+  margin: 15px 10px 0px 0px;
+  cursor: pointer;
+  float: right;
+}
+.logout:hover,
+.logout:active {
+  background-color: transparent;
+  color: #474192;
+  border: 1px solid #474192;
+  border-radius: 1px;
+  transition: all 0.2s;
+}
+.logout:active {
+  transform: translateY(3px);
+}
+
+.user-rooms-section {
+  background-color: #36393f;
+  padding-top: 50px;
+}
+
+.user-rooms-section-head {
+  text-transform: uppercase;
+  cursor: default;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin-left: 40px;
+}
+
+.user-rooms {
+  padding: 40px 30px 30px 30px;
+  width: 100%;
+  background-color: #36393f;
+}
+
+.user-room-name {
+  text-transform: uppercase;
+  color: #8e9297;
+  margin-left: 10px;
+  cursor: default;
+  font-size: 0.8rem;
+}
+
+.user-room {
+  width: 85%;
+  margin: 10px auto;
+  background-color: #2f3136;
+  color: #8e9297;
+  font-size: 12px;
+  padding: 10px !important;
+  height: 20vh;
+  overflow-y: hidden;
+  transition: all 0.2s;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.user-room:hover {
+  background-color: rgba(94, 44, 237, 0.3);
+  /* color: white; */
+  border-radius: 1px;
+}
+
+.profile-header {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0% 8%;
+}

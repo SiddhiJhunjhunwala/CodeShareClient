@@ -82,7 +82,6 @@ const SignupPage = (props) => {
                     for="tel"
                     onChange={handleChange("phone")}
                     id="phone"
-                    //    pattern
                   >
                     Contact No. (optional)
                   </label>
