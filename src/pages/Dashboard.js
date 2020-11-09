@@ -90,7 +90,9 @@ export default function Dashboard(props) {
                       <Grid key={idx} item xs={2}>
                         <a href={"/rooms/" + room.room_id}>
                           <h4 className="user-room-name">{room.room_name}</h4>
-                          <div className="user-room">{preview[idx]}</div>
+                          <div className="user-room">
+                            {preview[myRooms.length - idx - 1]}
+                          </div>
                         </a>
                       </Grid>
                     );

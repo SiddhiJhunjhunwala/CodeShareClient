@@ -13,8 +13,9 @@ import invite from "../images/invite.jpg";
 const RoomNav = (props) => {
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.user.current_user);
   const room_id = useSelector((state) => state.room.room_id);
-  const room_name = useSelector((state) => state.room.room_name);
+  // const room_name = useSelector((state) => state.room.room_name);
 
   const participants_central = useSelector((state) => state.room.participants);
   const [participants, set_participants] = useState([]);
@@ -30,6 +31,7 @@ const RoomNav = (props) => {
   useEffect(() => {
     dispatch(Actions.getRoomParticipants(room_id));
     dispatch(Actions.getRoomName(room_id));
+    dispatch(Actions.getCurrentUser());
   }, [dispatch, room_id]);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ const RoomNav = (props) => {
 
   return (
     <div className="room-nav">
-      <header className="room-nav-header">{room_name}</header>
+      <header className="room-nav-header">{user.first_name}'s CodePair</header>
       <div className="room-nav-content ">
         <div className="nav-sec">
           <div className="invite">
