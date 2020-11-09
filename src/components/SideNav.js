@@ -15,6 +15,11 @@ export default function SideNav(props) {
     window.location.reload();
   };
 
+  const redirectDashboard = () => {
+    history.push(`/dashboard`);
+    window.location.reload();
+  };
+
   useEffect(() => {
     dispatch(Actions.getMyRooms());
   }, [dispatch]);
@@ -27,7 +32,9 @@ export default function SideNav(props) {
         className="sidenavbar"
       >
         {/* Logo */}
-        <button className="button-nav logo">{/* <Icon></Icon> */}</button>
+        <button className="button-nav logo" onClick={() => redirectDashboard()}>
+          {/* <Icon></Icon> */}
+        </button>
         {/* division */}
         <div className="divider"></div>
         {/* Create room  */}
