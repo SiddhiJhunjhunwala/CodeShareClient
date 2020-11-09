@@ -13,12 +13,11 @@ import Pusher from "pusher-js";
 import axios from "axios";
 import BlockStyleControls from "./blockStyleControls";
 import InlineStyleControls from "./inlineStylesControls";
-import Button from "@material-ui/core/Button";
+
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
+
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -211,7 +210,7 @@ class RichEditor extends Component {
                 }}
                 className="save-editor"
               >
-                Last Checkpoint
+                Checkpoint
               </button>
             </div>
           </div>
@@ -269,28 +268,21 @@ class RichEditor extends Component {
             onClose={() => this.props.setContentModal(false)}
             aria-labelledby="responsive-dialog-title"
           >
-            <DialogTitle id="responsive-dialog-title">
-              Last Saved Content
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText>{this.props.text}</DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button
-                autoFocus
+            <div className="modal">
+              <h1 className="modal-heading">Last Saved Content</h1>
+
+              <DialogContent>
+                <div className="modal-content">{this.props.text}</div>
+              </DialogContent>
+
+              <button
                 onClick={() => this.props.setContentModal(false)}
-                color="primary"
-              >
-                Disagree
-              </Button>
-              <Button
-                onClick={() => this.props.setContentModal(false)}
-                color="primary"
                 autoFocus
+                className="modal-close"
               >
-                Agree
-              </Button>
-            </DialogActions>
+                Close
+              </button>
+            </div>
           </Dialog>
         </div>
         {/* Dialog Ends !!!!!!!!!!!!!!!!!!!1 */}

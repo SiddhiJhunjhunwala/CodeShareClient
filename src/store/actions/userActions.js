@@ -1,5 +1,5 @@
 import API from "../../lib/api";
-import { SET_AUTHENTICATED, SET_CURRENT_USER } from "../types";
+import { SET_AUTHENTICATED, SET_CURRENT_USER, OPEN_TOAST } from "../types";
 import history from "../../history";
 
 export const signup = (data, history) => {
@@ -9,10 +9,39 @@ export const signup = (data, history) => {
   return (dispatch) =>
     result
       .then((response) => {
-        if (response.status === 201) history.push("/login");
+        if (response.status === 201) {
+          history.push("/login");
+          window.location.reload();
+
+          const payload = {
+            message: "Account Created Successfully",
+            type: "success",
+          };
+          dispatch({
+            type: OPEN_TOAST,
+            payload,
+          });
+        } else {
+          const payload = {
+            message: "Signup Failed",
+            type: "error",
+          };
+          dispatch({
+            type: OPEN_TOAST,
+            payload,
+          });
+        }
       })
       .catch((Exception) => {
         console.log(Exception);
+        const payload = {
+          message: "Signup Failed",
+          type: "error",
+        };
+        dispatch({
+          type: OPEN_TOAST,
+          payload,
+        });
       });
 };
 
@@ -35,10 +64,37 @@ export const login = (data) => {
             payload: true,
           });
           history.push("/dashboard");
+          window.location.reload();
+          const payload = {
+            message: "Login Successful!",
+            type: "success",
+          };
+          dispatch({
+            type: OPEN_TOAST,
+            payload,
+          });
+        } else {
+          const payload = {
+            message: "Failed To Login",
+            type: "error",
+          };
+          dispatch({
+            type: OPEN_TOAST,
+            payload,
+          });
         }
         // Else popup needs to be shown using Toaster
       })
-      .catch((Exception) => {});
+      .catch((Exception) => {
+        const payload = {
+          message: "Failed To Login",
+          type: "error",
+        };
+        dispatch({
+          type: OPEN_TOAST,
+          payload,
+        });
+      });
 };
 
 export const verifyToken = (token, history) => {

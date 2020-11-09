@@ -3,7 +3,7 @@ import { Grid, FormHelperText, IconButton } from "@material-ui/core";
 import * as Actions from "../store/actions";
 import { useDispatch } from "react-redux";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 /**
  * @author
  * @function SignupPage
@@ -90,6 +90,7 @@ const SignupPage = (props) => {
                     type="tel"
                     id="tel"
                     style={{ marginBottom: "10px" }}
+                    onChange={handleChange("phone")}
                   ></input>
                 </Grid>
                 <Grid item xs={12}>

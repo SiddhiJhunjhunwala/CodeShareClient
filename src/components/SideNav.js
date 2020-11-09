@@ -27,9 +27,7 @@ export default function SideNav(props) {
         className="sidenavbar"
       >
         {/* Logo */}
-        <button className="button-nav">
-          <Icon></Icon>
-        </button>
+        <button className="button-nav logo">{/* <Icon></Icon> */}</button>
         {/* division */}
         <div className="divider"></div>
         {/* Create room  */}
