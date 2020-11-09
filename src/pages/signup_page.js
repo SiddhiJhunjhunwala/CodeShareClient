@@ -3,7 +3,7 @@ import { Grid, FormHelperText, IconButton } from "@material-ui/core";
 import * as Actions from "../store/actions";
 import { useDispatch } from "react-redux";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 /**
  * @author
  * @function SignupPage
@@ -80,8 +80,8 @@ const SignupPage = (props) => {
                 <Grid item xs={12}>
                   <label
                     for="tel"
-
-                    //    pattern
+                    onChange={handleChange("phone")}
+                    id="phone"
                   >
                     Contact No. (optional)
                   </label>
@@ -132,11 +132,11 @@ const SignupPage = (props) => {
                     SignUp
                   </button>
 
-                  <Link to="/login">
+                  <a href="/login">
                     <div className="button-bottom-signup">
                       Already have an account?
                     </div>
-                  </Link>
+                  </a>
                 </Grid>
               </Grid>
             </form>

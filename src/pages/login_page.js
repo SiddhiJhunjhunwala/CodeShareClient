@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Grid, Snackbar, IconButton } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 import * as Actions from "../store/actions";
 import { useDispatch } from "react-redux";
 import { VisibilityOff, Visibility } from "@material-ui/icons";
@@ -44,18 +43,9 @@ const LoginPage = (props) => {
               autoComplete="false"
               onSubmit={handleSubmit}
             >
-              <Snackbar
-                open
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "center",
-                }}
-                message="successfully complete"
-                variant="success"
-              />
               <Grid container>
                 <Grid item xs={12}>
-                  <label for="email">Email*</label>
+                  <label htmlFor="email">Email*</label>
                   <br />
                   <input
                     type="email"
@@ -67,7 +57,7 @@ const LoginPage = (props) => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <label for="password">
+                  <label htmlFor="password">
                     Password*{" "}
                     <IconButton
                       aria-label="toggle password visibility"
@@ -94,11 +84,11 @@ const LoginPage = (props) => {
                     Login
                   </button>
 
-                  <Link to="/signup">
+                  <a href="/signup">
                     <div className="button-bottom-signup">
                       Create an account?
                     </div>
-                  </Link>
+                  </a>
                   <div style={{ marginTop: "15px" }}></div>
                 </Grid>
               </Grid>

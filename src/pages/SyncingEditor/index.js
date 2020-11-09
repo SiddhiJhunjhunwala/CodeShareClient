@@ -65,6 +65,7 @@ class RichEditor extends Component {
     // this.handleSaveContent(this.state.editorState);
   }
 
+  centralText = "";
   componentWillMount() {
     this.pusher = new Pusher("9a986e8083642e754283", {
       cluster: "ap2",
@@ -144,7 +145,8 @@ class RichEditor extends Component {
     convertToRaw(editorState.getCurrentContent()).blocks.forEach((block) => {
       toSend = toSend + block.text + " ";
     });
-    saveContent(toSend);
+    this.centralText = toSend.trim();
+    if (toSend !== "") saveContent(toSend);
   }
 
   _notifyPusher(text) {
@@ -197,7 +199,13 @@ class RichEditor extends Component {
               <button
                 onClick={() => {
                   this.handleSaveContent(this.state.editorState);
-                  this.props.showToast("Saved!", "success");
+                  if (this.centralText !== "")
+                    this.props.showToast("Saved!", "success");
+                  else
+                    this.props.showToast(
+                      "Empty text cannot be saved!",
+                      "warning"
+                    );
                 }}
                 className="save-editor"
               >
