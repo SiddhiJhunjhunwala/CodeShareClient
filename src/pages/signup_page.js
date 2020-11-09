@@ -81,6 +81,7 @@ const SignupPage = (props) => {
                   <label
                     for="tel"
                     onChange={handleChange("phone")}
+                    id="phone"
                     //    pattern
                   >
                     Contact No. (optional)
@@ -131,11 +132,11 @@ const SignupPage = (props) => {
                     SignUp
                   </button>
 
-                  <Link to="/login">
+                  <a href="/login">
                     <div className="button-bottom-signup">
                       Already have an account?
                     </div>
-                  </Link>
+                  </a>
                 </Grid>
               </Grid>
             </form>

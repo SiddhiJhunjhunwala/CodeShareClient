@@ -94,11 +94,11 @@ const LoginPage = (props) => {
                     Login
                   </button>
 
-                  <Link to="/signup">
+                  <a href="/signup">
                     <div className="button-bottom-signup">
                       Create an account?
                     </div>
-                  </Link>
+                  </a>
                   <div style={{ marginTop: "15px" }}></div>
                 </Grid>
               </Grid>

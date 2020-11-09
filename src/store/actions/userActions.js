@@ -5,12 +5,15 @@ import history from "../../history";
 export const signup = (data, history) => {
   const result = API.post("/api/users/register", data);
 
+  console.log(data);
   return (dispatch) =>
     result
       .then((response) => {
         if (response.status === 201) history.push("/login");
       })
-      .catch((Exception) => {});
+      .catch((Exception) => {
+        console.log(Exception);
+      });
 };
 
 export const login = (data) => {
